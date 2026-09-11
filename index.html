@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0a101a"><meta name="description" content="Data Observatory. An interactive front-end experiment by Marwan Ahmed. Explore the space between data, design, and motion.">
+  <title>Data Observatory — Marwan Ahmed</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./credit-lab.css">
+  <link rel="stylesheet" href="./identity.css">
+  <link rel="stylesheet" href="./model-intro.css">
+  <noscript><style>.data-intro{height:65svh}.intro-sticky{position:relative;height:100%}.intro-progress,#intro-percent{display:none}</style></noscript>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <header class="header">
+    <a class="brand" href="#home" aria-label="Data Observatory home"><img src="./favicon.svg" alt="" width="38" height="38"><span>DATA<br>OBSERVATORY<span class="brand-dot">®</span></span></a>
+    <nav aria-label="Main navigation"><a href="#experience">Experience</a><a href="#lab">The lab</a><a href="#work">Selected work</a><a href="./about.html">About</a></nav>
+    <a class="header-contact" href="./about.html">Meet the maker <span>→</span></a>
+  </header>
+  <main id="main">
+    <section class="data-intro" id="intro" aria-label="Scroll through a model"><div class="intro-sticky"><div class="intro-toolbar"><span>DATA OBSERVATORY / MARWAN AHMED</span><a id="skip-intro" href="#home">Skip intro ↓</a></div><canvas id="intro-points" aria-hidden="true"></canvas><div class="intro-copy"><span id="intro-step">01 / INPUT</span><h2 id="intro-title">Inside the model.</h2><p id="intro-note">Scroll to move through the layers.</p></div><div class="intro-bottom"><div><strong>SCROLL TO EXPLORE ↓</strong><span>Input. Model. Prediction.</span><div class="intro-progress" aria-hidden="true"><span></span></div></div><span id="intro-percent" aria-hidden="true">000%</span></div></div></section>
+    <section class="hero" id="home" tabindex="-1" aria-labelledby="hero-title">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="eyebrow entrance"><span class="live-dot"></span> DATA SCIENCE · RISK ANALYTICS · SQL</div>
+        <h1 id="hero-title" class="entrance identity-title"><span class="identity-name">Marwan Ahmed.</span><span class="identity-accessible">Data Scientist. Predictive Models Developer. Risk Models Developer. SQL Developer.</span><span class="identity-stage" aria-hidden="true"><span class="identity-reserve">Predictive Models Developer</span><span class="identity-live"><span id="identity-role">Data Scientist</span><span class="identity-cursor">▏</span></span></span></h1>
+        <p class="hero-copy entrance">Finding the patterns. Modeling the possibilities.<br class="desktop-break"> Building the logic behind better decisions.</p>
+        <div class="identity-meta entrance"><span id="identity-index" aria-hidden="true">01 / 04</span><span>ONE MIND. CONNECTED DISCIPLINES.</span><button id="identity-pause" type="button" aria-pressed="false">Pause titles</button></div>
+        <a class="button button-lime entrance" href="#experience">Enter the observatory <span>↗</span></a>
+      </div>
+      <div class="scene-wrap" aria-hidden="true">
+        <div class="scene-halo"></div><canvas id="universe"></canvas>
+        <div class="scene-fallback"><div></div></div>
+        <span class="scene-coordinate coordinate-top">FIG. 001 / ORBITAL FIELD</span>
+        <div class="scene-readout"><span class="readout-dot"></span><div>18,432 signals<span>ONE CONNECTED SYSTEM</span></div><svg viewBox="0 0 90 32"><path d="M0 26L9 21L18 25L27 12L36 15L45 5L54 13L63 8L72 14L90 2"/></svg></div>
+        <span class="scene-coordinate coordinate-bottom">X <b id="coord-x">0.028</b> &nbsp; Y <b id="coord-y">0.640</b></span>
+      </div>
+      <div class="hero-foot"><span>CONCEPT & DEVELOPMENT — MARWAN AHMED</span><a href="#experience"><i></i> SCROLL TO DISCOVER <span>↓</span></a><span class="edition">EXPERIMENT NO. 002</span></div>
+    </section>
+    <div class="ticker" aria-hidden="true"><div>RAW DATA <span>✳</span> HUMAN INSIGHT <span>✳</span> DIGITAL CRAFT <span>✳</span> A DIFFERENT PERSPECTIVE <span>✳</span> RAW DATA <span>✳</span> HUMAN INSIGHT <span>✳</span> DIGITAL CRAFT <span>✳</span> A DIFFERENT PERSPECTIVE <span>✳</span></div></div>
+    <section class="journey" id="experience" aria-labelledby="journey-title">
+      <div class="journey-sticky">
+        <div class="section-meta"><span><i></i> 01 / A CHANGE IN PERSPECTIVE</span><span>SCROLL TO TRANSFORM ↓</span></div>
+        <div class="journey-layout">
+          <div class="journey-copy"><p class="overline">FROM COMPLEXITY TO CLARITY</p><h2 id="journey-title">A thousand points.<br><em>One bigger picture.</em></h2>
+            <div class="chapter-copy" aria-live="off"><span class="chapter-index">01 — COLLECT</span><h3>Start with possibility.</h3><p>Every point is a fragment of a story.<br>Look closer. The patterns are already there.</p></div>
+            <div class="chapter-steps" aria-label="Transformation stages"><span class="active">01 <b>Collect</b></span><span>02 <b>Connect</b></span><span>03 <b>Understand</b></span></div>
+          </div>
+          <div class="journey-diagram" aria-hidden="true"><canvas id="morph"></canvas><div class="diagram-floor"></div><span class="diagram-caption">SCATTERED SIGNALS</span><span class="diagram-counter">001 / 003</span></div>
+        </div>
+        <div class="journey-progress"><span></span></div>
+      </div>
+    </section>
+    <section class="lab section" id="lab" aria-labelledby="lab-title">
+      <div class="section-meta"><span><i></i> 02 / THE INTERACTIVE LAB</span><span>YOUR CURIOSITY. THE CONTROLS.</span></div>
+      <div class="section-heading reveal"><h2 id="lab-title">Follow your<br><em>curiosity.</em></h2><p>Change the lens. Move through time.<br>See a different story emerge.</p></div>
+      <div class="lab-panel reveal">
+        <div class="lab-toolbar"><div class="lab-name"><span class="live-dot"></span> SIGNAL EXPLORER <span class="demo-badge">DEMO DATA</span></div><div class="range-control" role="group" aria-label="Time range"><button type="button" data-range="6">6 months</button><button type="button" data-range="12" aria-pressed="true" class="selected">12 months</button></div></div>
+        <div class="lab-body">
+          <div class="lab-sidebar"><p class="overline">CHOOSE YOUR LENS</p><div class="lens-control" role="group" aria-label="Dataset"><button class="selected" aria-pressed="true" data-lens="growth"><span>↗</span> Growth <b>01</b></button><button aria-pressed="false" data-lens="engagement"><span>◎</span> Engagement <b>02</b></button><button aria-pressed="false" data-lens="retention"><span>◷</span> Retention <b>03</b></button></div><div class="metric-block"><span id="metric-label">REVENUE INDEX</span><strong id="metric-value">148.2</strong><small id="metric-change">↑ 48.2% over the period</small></div><div class="lab-note"><span>⌁</span> A small shift in perspective<br>can change the whole story.</div></div>
+          <div class="chart-area"><div class="chart-header"><span id="chart-title">Growth trajectory</span><span><i></i> OBSERVED SIGNAL</span></div><div class="chart-container"><svg id="signal-chart" viewBox="0 0 720 270" role="img" aria-labelledby="chart-accessible-title chart-desc"><title id="chart-accessible-title">Growth trajectory</title><desc id="chart-desc">Demonstration monthly revenue index.</desc><defs><linearGradient id="chart-fill" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#d7ff82" stop-opacity=".22"/><stop offset="1" stop-color="#d7ff82" stop-opacity="0"/></linearGradient></defs><g class="chart-grid"></g><path class="chart-area-fill"/><path class="chart-line"/><g class="chart-dots"></g><g class="chart-labels"></g><line class="chart-crosshair" y1="20" y2="228"/><circle class="chart-active-dot" r="6"/></svg><output class="chart-tooltip" hidden></output></div><div class="timeline"><label for="timeline-slider">EXPLORE A MONTH <span id="timeline-month">DECEMBER</span></label><input id="timeline-slider" type="range" min="0" max="11" value="11" aria-label="Explore a month"></div><div class="chart-foot"><span>01 JAN — 31 DEC · ILLUSTRATIVE SERIES</span><button id="reset-lab" type="button">Reset view ↺</button></div></div>
+        </div>
+      </div>
+      <p class="demo-disclosure">An original front-end experiment. All values in this explorer are simulated, not business results.</p>
+    </section>
+    <section class="work section" id="work" aria-labelledby="work-title">
+      <div class="section-meta"><span><i></i> 03 / GROUNDED IN REAL WORK</span><span>ANALYSIS MEETS EXECUTION</span></div>
+      <div class="section-heading reveal"><h2 id="work-title">Beyond the<br><em>experiment.</em></h2><p>Selected projects from my<br>data analysis & BI practice.</p></div>
+      <div class="work-grid">
+        <a class="lab-feature" href="./credit-lab.html"><span class="overline">PYTHON AND SQL</span><h3>iScore<br><em>Credit Lab.</em></h3><p>3,200 synthetic borrowers. 114,732 monthly records. Python and SQL, from preparing the data to checking the model. Browse the queries, change the threshold and download the files.</p><b>Enter the case study →</b></a>
+        <a class="work-card reveal" href="./finance.html"><div class="project-art finance-art" aria-hidden="true"><div class="art-label">SCB / FINANCIAL INTELLIGENCE</div><div class="bars-3d"><i style="--h:32%;--i:0"></i><i style="--h:48%;--i:1"></i><i style="--h:39%;--i:2"></i><i style="--h:66%;--i:3"></i><i style="--h:56%;--i:4"></i><i style="--h:85%;--i:5"></i><i style="--h:96%;--i:6"></i></div><span class="art-index">01 — CONCEPT VISUAL</span><span class="art-mark">↗</span></div><div class="work-info"><div><span>POWER BI / FINANCIAL ANALYSIS</span><h3>Suez Canal Bank</h3><p>Banking KPIs, revenue, earnings, and year-over-year performance.</p></div><span class="work-arrow">↗</span></div></a>
+<a class="work-card reveal" href="./score.html"><div class="project-art score-art" aria-hidden="true"><div class="art-label">ISCORE / A CLEARER PICTURE</div><svg viewBox="0 0 400 280"><g fill="none" stroke-width="25" transform="rotate(-90 200 140)"><circle cx="200" cy="140" r="98" stroke="#182c36"/><circle cx="200" cy="140" r="98" stroke="#8ee6dc" stroke-dasharray="450 616"/><circle cx="200" cy="140" r="61" stroke="#305053" stroke-width="1"/></g><text x="200" y="142" text-anchor="middle">iScore</text><text x="200" y="168" text-anchor="middle" class="ring-subtitle">EXPLORE THE SIGNAL</text></svg><span class="art-index">02 — CONCEPT VISUAL</span><span class="art-mark">◎</span></div><div class="work-info"><div><span>PYTHON / SQL / MODEL VALIDATION</span><h3>iScore Credit Lab</h3><p>Synthetic risk analytics with ROC, calibration, stability analysis, and 14 SQL reports.</p></div><span class="work-arrow">↗</span></div></a>
+        <a class="work-row reveal" href="./risk.html"><span class="row-number">03</span><h3>Credit Risk Management</h3><span class="row-tag">SQL / DATABASE DESIGN</span><span>↗</span></a>
+        <a class="work-row reveal" href="./people.html"><span class="row-number">04</span><h3>Understanding Attrition</h3><span class="row-tag">PYTHON / EXPLORATORY ANALYSIS</span><span>↗</span></a>
+      </div>
+    </section>
+    <footer class="footer section" id="contact"><div class="footer-orbit" aria-hidden="true">✳</div><div class="section-meta"><span><i></i> BUILT BY MARWAN AHMED</span><span>ALWAYS EXPLORING</span></div><p class="footer-kicker reveal">A LITTLE ANALYSIS. A LOT OF CURIOSITY.</p><h2 class="reveal">Let’s make<br><em>something click.</em></h2><a class="button button-lime reveal" href="https://www.linkedin.com/in/mrwan-ahmed/" target="_blank" rel="noopener noreferrer">Start a conversation <span>↗</span></a><div class="footer-bottom"><span>© 2026 MARWAN AHMED</span><div><a href="https://github.com/mrwanahmedx" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/mrwan-ahmed/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href="./about.html">About Marwan →</a><button type="button" id="motion-toggle" aria-pressed="false">Pause motion Ⅱ</button></div><a href="#home">BACK TO TOP ↑</a></div></footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

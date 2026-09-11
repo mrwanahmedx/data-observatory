@@ -1,0 +1,9 @@
+export const roles=['Data Scientist','Predictive Models Developer','Risk Models Developer','SQL Developer'];
+const HOLD=2200,ERASE=32,BLANK=260,TYPE=70;
+export const cycleDuration=roles.reduce((sum,role,i)=>sum+HOLD+role.length*ERASE+BLANK+roles[(i+1)%roles.length].length*TYPE,0);
+// Start on a complete title, then erase it before typing the following one.
+export function titleAtTime(milliseconds){let t=((milliseconds%cycleDuration)+cycleDuration)%cycleDuration;for(let i=0;i<roles.length;i++){const current=roles[i],next=roles[(i+1)%roles.length],duration=HOLD+current.length*ERASE+BLANK+next.length*TYPE;if(t>=duration){t-=duration;continue;}if(t<HOLD)return{text:current,index:i};t-=HOLD;if(t<current.length*ERASE)return{text:current.slice(0,current.length-Math.floor(t/ERASE)),index:i};t-=current.length*ERASE;if(t<BLANK)return{text:'',index:(i+1)%roles.length};t-=BLANK;return{text:next.slice(0,Math.min(next.length,Math.floor(t/TYPE)+1)),index:(i+1)%roles.length};}return{text:roles[0],index:0};}
+export function createIdentity({text,index,button,root,initialPaused=false}){let elapsed=0,localPaused=false,globalPaused=initialPaused,current=0;
+function paint(){const state=titleAtTime(elapsed);current=state.index;const content=globalPaused||localPaused?roles[current]:state.text;if(text.textContent!==content)text.textContent=content;index.textContent=`0${current+1} / 04`;root.classList.toggle('titles-paused',globalPaused||localPaused);button.setAttribute('aria-pressed',String(globalPaused||localPaused));button.disabled=globalPaused;button.textContent=globalPaused?'Motion paused':localPaused?'Resume titles':'Pause titles';}
+button.addEventListener('click',()=>{localPaused=!localPaused;paint();});paint();
+return{tick(delta){if(globalPaused||localPaused)return;elapsed+=delta*1000;paint();},setPaused(value){globalPaused=value;paint();}};}
