@@ -13,3 +13,21 @@ test('Deciles and product segments preserve borrower and exposure totals',()=>{f
 test('Tie scores, exact threshold and empty/single-class samples are safe',()=>{const rows=[{pd:.5,bad_6m:1},{pd:.5,bad_6m:0}];near(metrics(rows).roc_auc,.5);near(metrics(rows).average_precision,.5);assert.equal(confusion(rows,.5).tp,1);assert.equal(metrics([]).roc_auc,null);assert.equal(metrics([{pd:.4,bad_6m:0}]).roc_auc,null);assert.equal(psi([],[.1]).value,null);assert.deepEqual(deciles([]),[]);});
 test('All 14 SQL reports have matching source, with synthetic-only mart',async()=>{const queries=JSON.parse(await readFile('assets/credit-lab/queries.json','utf8'));assert.equal(Object.keys(queries).length,14);assert.deepEqual(Object.keys(queries),Object.keys(data.reports));assert.equal(new Set(data.rows.map(r=>r.borrower_id)).size,3200);assert.ok(data.rows.every(r=>/^SYN-\d{5}$/.test(r.borrower_id)));assert.equal(data.synthetic,true);});
 test('Dashboard entry points include all five functional destinations',async()=>{for(const name of ['score','credit-lab']){const html=await readFile(`dist/${name}.html`,'utf8');for(const panel of ['overview','performance','monitoring','code','governance']){assert.ok(html.includes(`data-panel="${panel}"`));assert.ok(html.includes(`id="panel-${panel}"`));}assert.ok(html.includes('risk-dashboard.js'));}});
+
+test('SQL showcase demonstrates grain control and anti-fan-out engineering',async()=>{
+  const queries=JSON.parse(await readFile('assets/credit-lab/queries.json','utf8'));
+  assert.ok(Object.values(queries).every(q=>/WITH|ROW_NUMBER|GRAIN|FAN-OUT|SOURCE-GRAIN/i.test(q)));
+  const joined=['03_utilization_segments','07_product_mix','08_history_segments','09_analytical_mart','12_exposure_by_risk','14_training_woe_counts'];
+  for(const key of joined){
+    assert.ok(/ROW_NUMBER\(\) OVER/i.test(queries[key]),key+' missing duplicate guard');
+    assert.ok(/JOIN/i.test(queries[key]),key+' missing controlled join');
+  }
+});
+test('Built iScore pages are web-first and contain no project download controls',async()=>{
+  for(const name of ['score','credit-lab']){
+    const html=await readFile(`dist/${name}.html`,'utf8');
+    assert.ok(html.includes('data-open-panel="code"'));
+    assert.ok(!/Download project|Export report CSV|Export CSV|download href/i.test(html));
+    assert.ok(html.includes('WEB CODE SHOWCASE / SAVED OUTPUT'));
+  }
+});
