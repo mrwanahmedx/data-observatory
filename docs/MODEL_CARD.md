@@ -35,3 +35,7 @@ ROC AUC, Brier score, KS, event rate, mean predicted PD, calibration by risk dec
 ## Known limitations
 
 The synthetic data-generating process includes relationships that a logistic model can learn. The project therefore tests workflow discipline more than challenger-model selection.
+
+## Staging boundary
+
+The illustrative staging example uses a separately generated synthetic origination PD reference that is excluded from the PD model feature set. The latent default-generating probability is not used as a staging input.
