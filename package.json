@@ -1,1 +1,15 @@
-{"name":"data-observatory","version":"3.0.0","private":true,"type":"module","scripts":{"dev":"node serve.mjs","build":"node build.mjs","test":"node --test tests.mjs risk-tests.mjs model-intro-tests.mjs"}}
+{
+  "name": "data-observatory",
+  "version": "3.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node serve.mjs",
+    "build": "node build.mjs",
+    "test": "node --test tests.mjs risk-tests.mjs model-intro-tests.mjs",
+    "test:e2e": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+}
