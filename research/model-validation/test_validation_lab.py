@@ -1,6 +1,7 @@
 import importlib.util
 from pathlib import Path
 import unittest
+import sys
 
 import numpy as np
 import pandas as pd
@@ -9,6 +10,7 @@ path = Path(__file__).with_name("validation_lab.py")
 spec = importlib.util.spec_from_file_location("validation_lab", path)
 lab = importlib.util.module_from_spec(spec)
 assert spec.loader is not None
+sys.modules[spec.name] = lab
 spec.loader.exec_module(lab)
 
 
