@@ -1,90 +1,90 @@
-# Data Observatory
+# Credit Risk Model Development Lab
 
-Interactive portfolio by Marwan Ahmed, focused on risk analytics, SQL/data engineering, model validation, financial analysis, and browser-based data storytelling.
+Standalone-ready synthetic credit-risk modeling project focused on **PD model development, validation, monitoring, and illustrative IFRS 9-style staging/ECL mechanics**.
 
-## Reviewer path
+> **Important:** all data is synthetic. This project does not contain employer, bank, customer, or confidential model information. The IFRS 9 examples are educational and are not a regulatory implementation.
 
-For a fast technical review:
+## What this project demonstrates
 
-1. open the [live Data Observatory](https://mrwanahmedx.github.io/data-observatory/),
-2. inspect **iScore Credit Lab** for Python, SQL, model validation, and governance,
-3. inspect **Credit Risk Management** for grain-safe SQL/data engineering,
-4. inspect **Suez Canal Bank** for financial-analysis/dashboard work,
-5. read the [engineering change log](./CHANGELOG.md) for material fixes and regression controls.
-
-The portfolio is intentionally explicit about limitations: synthetic or illustrative data is labeled, failed assumptions are documented, and reliability changes are preserved in Git history.
+- explicit observation / outcome timing,
+- synthetic borrower-level data generation,
+- out-of-time development / validation split,
+- transparent logistic-regression PD baseline,
+- ROC AUC, Brier score, KS, calibration tables and deciles,
+- population-stability monitoring,
+- model-card and validation documentation,
+- illustrative staging using DPD / PD deterioration,
+- simplified ECL mechanics using PD, LGD and EAD,
+- automated tests and reproducible CI.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-    A[Source project / synthetic assets] --> B[Project-specific analytical logic]
-    B --> C[Reusable browser components]
-    C --> D[Generated project pages]
-    D --> E[Automated tests]
-    E --> F[GitHub Pages deployment]
-
-    B --> G[iScore model + SQL validation]
-    B --> H[Suez financial calculations]
-    B --> I[Credit-risk SQL engineering]
-    B --> J[Exploratory analytics]
+    A[Synthetic portfolio generator] --> B[Observation-date feature table]
+    B --> C[Time-based development split]
+    C --> D[Logistic PD baseline]
+    D --> E[Validation metrics]
+    E --> F[Calibration / deciles]
+    E --> G[Monitoring / PSI]
+    D --> H[Illustrative IFRS 9 staging]
+    H --> I[Simplified ECL]
+    E --> J[Model card / validation evidence]
 ```
 
-## Tech stack
+## Modeling protocol
 
-- JavaScript / ES modules
-- HTML / CSS
-- Node.js build scripts
-- Python + SQL source embedded for the Credit Lab
-- GitHub Actions CI
-- GitHub Pages
+- **Target:** synthetic 12-month default indicator.
+- **Development:** earlier observation cohorts.
+- **Validation:** later observation cohorts; no random reshuffle across time.
+- **Primary model:** logistic regression with standardized numeric inputs and one-hot categorical inputs.
+- **Primary discrimination metric:** ROC AUC.
+- **Probability quality:** Brier score plus calibration-by-decile.
+- **Ranking diagnostic:** KS statistic.
+- **Population monitoring:** PSI against development feature distributions.
+- **Staging:** illustrative only; combines 30/90 DPD rules with a relative PD-deterioration trigger.
+- **ECL:** simplified educational formula; not a complete IFRS 9 cash-flow engine.
 
-## What is in the site
+## Quick start
 
-- **Suez Canal Bank dashboard** — an interactive web recreation of the original Power BI project, with coherent selected-year KPI logic and bounded chart rendering.
-- **iScore Credit Lab** — synthetic credit-risk analytics with model performance, calibration, stability, threshold analysis, engineered SQL and Python source shown directly in the browser.
-- **Credit Risk Management** — SQL/database design project.
-- **Understanding Attrition** — Python exploratory analysis project.
-- Scroll-driven model and data-visualisation experiments on the home page.
+Python 3.11+.
 
-All Credit Lab data is synthetic. No employer data, customer records, internal bank models or confidential methods are used.
-
-## Development
-
-Requires Node.js 20 or later. No package installation is required.
-
-```sh
-npm run build
-npm test
-node serve.mjs
+```bash
+python -m pip install -e .[dev]
+python -m credit_risk_model.pipeline
+pytest -q
 ```
 
-Then open `http://127.0.0.1:4186`.
+## Repository structure
 
-The source of truth is the repository source files. `build.mjs` creates the deployable site in `dist/`; generated HTML pages and packaged site archives are intentionally not committed.
+```text
+src/credit_risk_model/       model-development package
+tests/                       reproducibility and validity controls
+docs/                        model card, data dictionary, validation notes, ADRs
+examples/                    minimal runnable example
+.github/workflows/ci.yml     executable project validation
+```
 
-## Deployment
+## Engineering controls
 
-Pull requests to `main` first run a non-deploying CI gate that builds the site, checks browser JavaScript syntax, and runs the automated test suite. GitHub Pages then rebuilds current source on merged pushes to `main` and deploys `dist/` only if those checks pass again.
+- target column is excluded from model features,
+- time split is asserted in tests,
+- generated probabilities must stay in [0, 1],
+- staging precedence is tested,
+- ECL must remain non-negative and bounded by EAD under the simplified assumptions,
+- synthetic generation is deterministic by seed,
+- validation metrics are computed only on the later cohort.
 
-The test suite covers:
+## Limitations
 
-- dashboard calculations and chart bounds,
-- local links and generated assets,
-- model metrics and threshold logic,
-- Credit Lab SQL/source parity,
-- synthetic-data controls,
-- navigation and interaction state.
+- synthetic data and synthetic default-generating process,
+- simplified macro and borrower relationships,
+- no TTC/PIT regulatory calibration claim,
+- no real bank segmentation or rating scale,
+- no survival / competing-risk modeling,
+- simplified one-period ECL illustration rather than discounted contractual cash-flow modeling,
+- no claim of production readiness or regulatory approval.
 
-## Credit Lab architecture
+## Why this project exists
 
-Runtime Credit Lab assets live in `assets/credit-lab/`:
-
-- `analytics.json` — synthetic borrower/model results used by the dashboard,
-- `results.json` — reference outputs used for generated case-study pages and tests,
-- `queries.json` — SQL reports with explicit grain control, duplicate guards and anti-fan-out joins,
-- `sources.json` — Python source shown in the web code studio.
-
-The portfolio is intentionally **web-first**: visitors inspect code and saved results in the browser rather than being pushed toward project-file downloads.
-
-[Engineering change log](./CHANGELOG.md) · [Live Data Observatory](https://mrwanahmedx.github.io/data-observatory/) · [GitHub profile](https://github.com/mrwanahmedx) · [LinkedIn](https://www.linkedin.com/in/mrwan-ahmed/)
+The objective is not to show a flashy model. It is to show the **discipline around a model**: timing, grain, baseline choice, validation, monitoring, documentation, and explicit boundaries on what the evidence supports.

@@ -1,32 +1,23 @@
-name: Portfolio CI
+name: Credit Risk Model CI
 
 on:
+  push:
   pull_request:
-    branches: [main]
 
 permissions:
   contents: read
 
-concurrency:
-  group: portfolio-ci-${{ github.event.pull_request.number }}
-  cancel-in-progress: true
-
 jobs:
-  validate:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-python@v5
         with:
-          node-version: 20
-      - name: Build current website
-        run: npm run build
-      - name: Check browser JavaScript syntax
-        run: |
-          node --check app.js
-          node --check risk-dashboard.js
-          node --check finance-dashboard.js
-          node --check finance-dashboard-core.js
-          node --check project.js
+          python-version: "3.11"
+      - name: Install project
+        run: python -m pip install -e .[dev]
       - name: Run tests
-        run: npm test
+        run: pytest -q
+      - name: Run example pipeline
+        run: python -m credit_risk_model.pipeline
