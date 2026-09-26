@@ -28,6 +28,6 @@ test('Built iScore pages are web-first and contain no project download controls'
     const html=await readFile(`dist/${name}.html`,'utf8');
     assert.ok(html.includes('data-open-panel="code"'));
     assert.ok(!/Download project|Export report CSV|Export CSV|download href/i.test(html));
-    assert.ok(html.includes('WEB CODE SHOWCASE / SAVED OUTPUT'));
+    assert.ok(html.includes('WEB CODE SHOWCASE / ENGINEERING CONTROLS'));assert.ok(html.includes('SQL engineering'));
   }
 });
