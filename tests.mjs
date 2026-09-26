@@ -5,12 +5,53 @@ import {studies,getStudyView} from './studies.js';
 import {readFile,readdir,access} from 'node:fs/promises';
 import path from 'node:path';
 import {introState} from './intro.js';
+import {rows as financeRows,financeView,yoyDomain,chartY} from './finance-dashboard-core.js';
 test('Scroll opening clamps progress, changes stages, and flies through only after forming the ring',()=>{assert.equal(introState(-1).progress,0);assert.equal(introState(2).progress,1);assert.equal(introState(.2).stage,0);assert.equal(introState(.5).stage,1);assert.equal(introState(.8).stage,2);assert.equal(introState(.6).fly,0);assert.equal(introState(1).morph,2);assert.equal(introState(1).fly,9);assert.equal(introState(1).opacity,0);});
 import {roles,titleAtTime,cycleDuration,createIdentity} from './identity.js';
 test('Identity title holds, erases, types and loops through every requested role',()=>{assert.equal(titleAtTime(0).text,'Data Scientist');assert.equal(titleAtTime(cycleDuration).text,roles[0]);const seen=new Set();let erased=false,partial=false;for(let t=0;t<cycleDuration;t+=10){const s=titleAtTime(t);assert.ok(roles[s.index].startsWith(s.text));if(s.text===roles[s.index])seen.add(s.text);if(!s.text)erased=true;if(s.text&&s.text!==roles[s.index])partial=true;}assert.equal(seen.size,4);assert.ok(erased&&partial);});
 test('Reduced motion and local pause show complete titles and freeze elapsed time',()=>{const text={},index={},button={setAttribute(){},addEventListener(_,fn){this.click=fn;}},root={classList:{toggle(){}}};const c=createIdentity({text,index,button,root,initialPaused:true});c.tick(5);assert.equal(text.textContent,roles[0]);assert.equal(button.disabled,true);c.setPaused(false);c.tick(2.4);button.click();assert.ok(roles.includes(text.textContent));const frozen=text.textContent;c.tick(10);assert.equal(text.textContent,frozen);button.click();assert.equal(button.textContent,'Pause titles');});
 import {thresholdMetrics} from './credit-lab.js';
 test('Credit lab JavaScript reproduces Python confusion and boundary cases',async()=>{const r=JSON.parse(await readFile('assets/credit-lab/results.json','utf8'));const m=thresholdMetrics(r.test_predictions,r.threshold);for(const k of Object.keys(m))assert.ok(Math.abs(m[k]-r.metrics.test[k])<1e-12);assert.equal(thresholdMetrics(r.test_predictions,0).fn,0);assert.equal(thresholdMetrics(r.test_predictions,1).tp,0);assert.equal(thresholdMetrics([{pd:.25,bad_6m:1}],.25).tp,1);});
+
+test('SCB dashboard keeps one coherent selected-year context',()=>{
+  assert.equal(financeRows.length,21);
+  assert.equal(new Set(financeRows.map(r=>r.y)).size,21);
+  const v=financeView(2022);
+  assert.equal(v.current.a,50.43);
+  assert.equal(v.current.r,23.18);
+  assert.equal(v.previous.y,2021);
+  assert.equal(v.previous.r,23.22);
+  assert.equal(v.current.pe,20.4);
+  assert.equal(v.current.m,33.7);
+  assert.ok(Math.abs(v.revenueYoy-((23.18/23.22-1)*100))<1e-12);
+  assert.ok(Math.abs(v.earningsYoy-((7.82/9.12-1)*100))<1e-12);
+});
+test('SCB YoY scaling contains every bar inside the chart plot',()=>{
+  const values=[];
+  for(let i=1;i<financeRows.length;i++){
+    values.push((financeRows[i].r/financeRows[i-1].r-1)*100);
+    values.push((financeRows[i].e/financeRows[i-1].e-1)*100);
+  }
+  const domain=yoyDomain(values);
+  for(const value of values){
+    const y=chartY(value,{...domain,top:14,bottom:176});
+    assert.ok(Number.isFinite(y));
+    assert.ok(y>=14&&y<=176);
+  }
+});
+test('SCB presentation does not expose summed ratio labels and clips chart SVGs',async()=>{
+  const [html,css,js]=await Promise.all([
+    readFile('finance.html','utf8'),
+    readFile('finance-dashboard.css','utf8'),
+    readFile('finance-dashboard.js','utf8')
+  ]);
+  assert.ok(!/Sum of P\/E|Sum of Operating Margin|Sum of EPS/i.test(html));
+  assert.ok(html.includes('Selected-year ratio'));
+  assert.ok(css.includes('.scb-chart>svg'));
+  assert.ok(css.includes('overflow:hidden'));
+  assert.ok(js.includes("clip-path"));
+});
+
 test('Six-month range returns July through December for every lens',()=>{for(const key of Object.keys(datasets))assert.deepEqual(seriesFor(key,6),datasets[key].values.slice(6));});
 test('Period change is relative to first visible month',()=>{assert.equal(changeFor([100,125],1),25);assert.equal(changeFor([100,125],0),0);assert.equal(changeFor([100,75],1),-25);});
 test('All chart series remain within the plot bounds',()=>{for(const key of Object.keys(datasets))for(const range of [6,12]){const points=plotPoints(seriesFor(key,range));assert.equal(points.length,range);assert.equal(points[0].x,48);assert.equal(points.at(-1).x,688);for(const p of points){assert.ok(Number.isFinite(p.x)&&Number.isFinite(p.y));assert.ok(p.y>=30&&p.y<=220);}}});
