@@ -53,3 +53,25 @@
 .scb-footnote{display:flex;justify-content:space-between;gap:20px;padding:8px 12px 10px;color:#64788c;font-size:8px}
 .scb-empty{color:#8493a0}
 @media(max-width:700px){.scb-section{padding:40px 0 60px}.scb-intro{padding:0 6%;display:block}.scb-intro h2{font-size:29px}.scb-intro p{margin-top:12px}.scb-shell{border-radius:0;border-inline:0}}
+
+/* Power BI screenshot fidelity pass */
+.scb-dashboard{font-family:"Segoe UI",Arial,sans-serif}
+.scb-topbar{height:64px;grid-template-columns:190px 1fr 190px;padding:0 18px}
+.scb-brand{font-size:10px;gap:8px;line-height:1.1}
+.scb-logo-mark{width:52px;height:30px;display:flex;gap:3px;align-items:center;background:#fff;border-radius:4px;padding:5px}
+.scb-logo-mark i{display:block;width:11px;height:16px;border-radius:2px 7px 2px 7px;background:#1764b0;transform:skewX(-18deg)}
+.scb-logo-mark i:nth-child(2){height:19px}.scb-logo-mark i:nth-child(3){height:22px}
+.scb-title strong{font-size:19px}.scb-title span{font-size:9px}
+.scb-stamp{font-size:8px}
+.scb-tabs{padding:6px 12px 7px;gap:28px}
+.scb-tab{padding:6px 15px;font-size:10px;border-radius:1px}
+.scb-layout{grid-template-columns:88px 1fr;padding:7px 8px 8px;gap:9px}
+.scb-years{height:548px;border-radius:10px;padding:4px 4px}
+.scb-years h3{font-size:9px;margin:2px 0 5px}
+.scb-year-list{gap:3px}.scb-year{height:30px;border-radius:11px;font-size:9px}
+.scb-main{gap:9px}
+.scb-kpis,.scb-kpis.second{grid-template-columns:1.32fr 1.02fr .93fr .93fr .93fr;gap:9px}
+.scb-card{height:82px;padding:8px 10px;border-radius:5px}
+.scb-card-label{font-size:9px;margin-bottom:3px}.scb-card-value{font-size:22px}.scb-card-sub{font-size:7px}
+.scb-viz{grid-template-columns:1.06fr 1fr;gap:9px}.scb-panel{padding:8px;border-radius:5px}.scb-panel-head{font-size:10px}
+.scb-bottom{grid-template-columns:1.06fr 1fr;gap:9px}.scb-gauge{height:98px}.scb-table-panel{height:98px}
