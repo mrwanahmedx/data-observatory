@@ -41,8 +41,9 @@ test('iScore dashboard initializes and opens the SQL studio', async ({ page }) =
 
   await expect(page.locator('#load-status')).not.toContainText('could not load');
   await expect(page.locator('#load-status')).not.toContainText('initialization failed');
-  await expect(page.getByText('Borrowers in sample')).toBeVisible();
-  await expect(page.getByText('Model ROC AUC')).toBeVisible();
+  await expect(page.locator('#overview-kpis .kpi')).toHaveCount(4);
+  await expect(page.locator('#overview-kpis')).toContainText('Borrowers');
+  await expect(page.locator('#performance-kpis')).toContainText('ROC AUC');
 
   const codeButton = page.locator('[data-panel="code"]');
   await codeButton.click();
