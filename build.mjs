@@ -3,12 +3,13 @@ import {creditLabPage} from './credit-lab-page.mjs';
 import {riskDashboardPage} from './risk-dashboard-page.mjs';
 import {projectPage,aboutPage} from './pages.mjs';
 import {studies} from './studies.js';
-const files=['index.html','style.css','app.js','scene.js','data.js','favicon.svg','studies.js','project.js','pages.css'];
+const files=['index.html','style.css','app.js','scene.js','data.js','favicon.svg','studies.js','project.js','pages.css','finance-dashboard.css','finance-dashboard.js'];
 files.push('identity.js','identity.css');
 files.push('intro.js','intro.css','model-intro.js','model-intro.css');
 await mkdir('dist',{recursive:true});
 for(const file of files){await copyFile(file,`dist/${file}`);}
-for(const key of Object.keys(studies)){await writeFile(`dist/${key}.html`,projectPage(key));}
+for(const key of Object.keys(studies)){if(key==='finance')continue;await writeFile(`dist/${key}.html`,projectPage(key));}
+await copyFile('finance.html','dist/finance.html');
 await writeFile('dist/about.html',aboutPage());
 const result=JSON.parse(await readFile('assets/credit-lab/results.json','utf8'));
 await writeFile('dist/credit-lab.html',riskDashboardPage(result));
