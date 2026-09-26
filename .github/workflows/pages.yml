@@ -29,6 +29,12 @@ jobs:
           node --check project.js
       - name: Run tests
         run: npm test
+      - name: Install browser test dependency
+        run: npm install --no-package-lock
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run browser end-to-end tests
+        run: npm run test:e2e
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
