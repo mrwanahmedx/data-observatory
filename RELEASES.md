@@ -1,6 +1,6 @@
 # Release History
 
-Git tags cannot currently be created through the connected GitHub tool, so this file is the canonical release record until tag-writing is available.
+Annotated Git tags mirror the formal release records below. This file remains the human-readable release history.
 
 ## v3.1.0 — Reliability & Engineering Evidence — 2026-09-26
 
