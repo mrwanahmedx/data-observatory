@@ -16,6 +16,10 @@ This file records material portfolio, data-engineering, reliability, and bug-fix
 - **Credit Lab SQL was hardened** — the report queries now make data grain explicit, deduplicate before one-to-many joins, pre-aggregate where required, and document anti-fan-out controls.
 - **Credit Risk Management demo was aligned to its real schema** — the browser SQL example now uses the project’s actual Customers, Accounts, Loans, Payments, Payment_Schedule, and Credit_Scores entities rather than toy placeholder tables.
 - **Deployment validation was tightened** — GitHub Pages builds from current source, checks browser JavaScript syntax, runs the automated test suite, and only deploys after those gates pass.
+- **Pre-merge CI was added** — pull requests targeting `main` now build the site, check browser JavaScript syntax, and run the full automated test suite before merge.
+- **Recruiter-facing project briefs were added** — project pages now make the problem, data, method, engineering challenge, result, limitations, and code path explicit.
+- **iScore architecture was made explicit** — the case study now shows source grain → point-in-time cutoff → feature layer → model/validation → reporting layer.
+- **Credit Lab SQL was made deterministic** — duplicate resolution now uses real ordering fields such as `snapshot_date`, the analytical mart no longer uses `SELECT *`, and the mart documents its duplicate release gate.
 
 ### Reliability evidence
 
