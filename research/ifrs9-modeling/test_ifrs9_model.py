@@ -1,6 +1,7 @@
 import importlib.util
 from pathlib import Path
 import unittest
+import sys
 
 import numpy as np
 
@@ -8,6 +9,7 @@ MODULE_PATH = Path(__file__).with_name("ifrs9_model.py")
 spec = importlib.util.spec_from_file_location("ifrs9_model", MODULE_PATH)
 m = importlib.util.module_from_spec(spec)
 assert spec.loader is not None
+sys.modules[spec.name] = m
 spec.loader.exec_module(m)
 
 
