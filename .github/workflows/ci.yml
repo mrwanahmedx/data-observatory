@@ -1,0 +1,32 @@
+name: Portfolio CI
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-ci-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build current website
+        run: npm run build
+      - name: Check browser JavaScript syntax
+        run: |
+          node --check app.js
+          node --check risk-dashboard.js
+          node --check finance-dashboard.js
+          node --check finance-dashboard-core.js
+          node --check project.js
+      - name: Run tests
+        run: npm test

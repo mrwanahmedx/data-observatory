@@ -17,11 +17,14 @@ test('Dashboard entry points include all five functional destinations',async()=>
 test('SQL showcase demonstrates grain control and anti-fan-out engineering',async()=>{
   const queries=JSON.parse(await readFile('assets/credit-lab/queries.json','utf8'));
   assert.ok(Object.values(queries).every(q=>/WITH|ROW_NUMBER|GRAIN|FAN-OUT|SOURCE-GRAIN/i.test(q)));
+  assert.ok(Object.values(queries).every(q=>!/SELECT\s+\*/i.test(q)),'SQL showcase must not use SELECT *');
   const joined=['03_utilization_segments','07_product_mix','08_history_segments','09_analytical_mart','12_exposure_by_risk','14_training_woe_counts'];
   for(const key of joined){
     assert.ok(/ROW_NUMBER\(\) OVER/i.test(queries[key]),key+' missing duplicate guard');
     assert.ok(/JOIN/i.test(queries[key]),key+' missing controlled join');
   }
+  assert.ok(/snapshot_date DESC/i.test(queries['09_analytical_mart']));
+  assert.ok(/RELEASE GATE/i.test(queries['09_analytical_mart']));
 });
 test('Built iScore pages are web-first and contain no project download controls',async()=>{
   for(const name of ['score','credit-lab']){
@@ -33,3 +36,15 @@ test('Built iScore pages are web-first and contain no project download controls'
 });
 
 test('Dashboard source does not call forEach on single-element selector helper',async()=>{const js=await readFile('risk-dashboard.js','utf8');assert.ok(!/(^|[^$])\$\('[^']+'\)\.forEach/m.test(js));assert.ok(js.includes("$$('[data-panel]').forEach"));assert.ok(js.includes("$$('.report-panel').forEach"));assert.ok(js.includes("$$('[data-open-panel]').forEach"));});
+
+test('Built iScore case study exposes architecture, recruiter brief and reliability evidence',async()=>{
+  const methodology=await readFile('dist/credit-methodology.html','utf8');
+  const dashboard=await readFile('dist/credit-lab.html','utf8');
+  for(const label of ['Problem','Data','Method','Engineering challenge','Result','Limitations','Code'])assert.ok(methodology.includes(label));
+  assert.ok(methodology.includes('SOURCE TABLES'));
+  assert.ok(methodology.includes('GRAIN CONTROL'));
+  assert.ok(methodology.includes('all fourteen engineered reports'));
+  assert.ok(methodology.includes('Reliability evidence from a real regression'));
+  assert.ok(dashboard.includes('risk-brief'));
+  assert.ok(dashboard.includes('fourteen SQL reports'));
+});
