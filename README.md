@@ -6,10 +6,10 @@ Interactive portfolio by Marwan Ahmed, focused on risk analytics, SQL/data engin
 
 For a fast technical review:
 
-1. open the [live Data Observatory](https://mrwanahmedx.github.io/data-observatory/),
-2. inspect **Credit Risk Lab** for Python, SQL, model validation, and governance,
-3. inspect **Credit Risk Management** for grain-safe SQL/data engineering,
-4. inspect **Suez Canal Bank** for financial-analysis/dashboard work,
+1. inspect **IFRS 9 Credit Risk Modeling** for synthetic ECL architecture, staging and scenario-weighted loss calculations,
+2. inspect **Credit Risk Model Validation** for discrimination, calibration, stability and observed-vs-expected testing,
+3. open the [live Data Observatory](https://mrwanahmedx.github.io/data-observatory/) and review **Credit Risk Lab**,
+4. inspect **Credit Risk Management** for grain-safe SQL/data engineering,
 5. read the [engineering change log](./CHANGELOG.md) for material fixes and regression controls.
 
 The portfolio is intentionally explicit about limitations: synthetic or illustrative data is labeled, failed assumptions are documented, and reliability changes are preserved in Git history.
@@ -25,7 +25,6 @@ flowchart LR
     E --> F[GitHub Pages deployment]
 
     B --> G[Credit-risk model + SQL validation]
-    B --> H[Suez financial calculations]
     B --> I[Credit-risk SQL engineering]
     B --> J[Exploratory analytics]
 ```
@@ -41,13 +40,23 @@ flowchart LR
 
 ## What is in the site
 
-- **Suez Canal Bank dashboard** — an interactive web recreation of the original Power BI project, with coherent selected-year KPI logic and bounded chart rendering.
+- **IFRS 9 Credit Risk Modeling** — clean-room synthetic ECL engine with configurable staging, PD/LGD/EAD components, macro scenarios, discounting and regression tests.
+- **Credit Risk Model Validation** — independent synthetic validation engine covering AUC/Gini, KS, Brier, calibration, PSI, observed-vs-expected testing and explicit verdicts.
 - **Credit Risk Lab** — synthetic credit-risk analytics with model performance, calibration, stability, threshold analysis, engineered SQL and Python source shown directly in the browser.
 - **Credit Risk Management** — SQL/database design project.
 - **Understanding Attrition** — Python exploratory analysis project.
 - Scroll-driven model and data-visualisation experiments on the home page.
 
 All Credit Lab data is synthetic. No employer data, customer records, internal bank models or confidential methods are used.
+
+## Clean-room research modules
+
+- [IFRS 9 Credit Risk Modeling](research/ifrs9-modeling/README.md)
+- [Credit Risk Model Validation](research/model-validation/README.md)
+
+GitHub CI currently executes **11 regression tests** across the two modules: 7 for the ECL engine and 4 for the validation engine. The validation demo intentionally returns **PASS WITH LIMITATIONS** when calibration evidence breaches the illustrative governance ranges.
+
+Both modules are governed by [PUBLIC_DATA_BOUNDARY.md](PUBLIC_DATA_BOUNDARY.md). They use synthetic/public concepts only and prohibit employer/customer data, internal schemas, proprietary methods and private model outputs.
 
 ## Development
 
