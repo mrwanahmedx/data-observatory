@@ -21,4 +21,4 @@ await copyFile('credit-lab.js','dist/credit-lab.js');
 await copyFile('credit-lab.css','dist/credit-lab.css');
 const html=await readFile('dist/index.html','utf8');
 for(const asset of ['style.css','app.js','favicon.svg'])if(!html.includes(asset))throw new Error(`Missing reference: ${asset}`);
-console.log('Built home, six internal pages, interactive assets and project downloads.');
+console.log('Built home, internal pages, interactive assets and web-first code showcases.');
