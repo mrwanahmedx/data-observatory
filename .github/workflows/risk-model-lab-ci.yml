@@ -27,11 +27,11 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install project
-        run: python -m pip install -e .
+        run: python -m pip install -e ".[test]"
       - name: Compile source
         run: python -m compileall src tests
       - name: Run model-development tests
-        run: python -m unittest discover -s tests -v
+        run: python -m pytest -q
       - name: Execute reproducible pipeline
         run: python -m risk_model_lab.pipeline --borrowers 1800 --seed 20260926 --output artifacts/ci-run.json
       - name: Validate run artifact

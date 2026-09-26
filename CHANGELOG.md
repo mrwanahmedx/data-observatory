@@ -1,5 +1,7 @@
 # Changelog
 
+- Fixed the Risk Model Lab CI test runner: pytest-style tests were previously invoked through unittest discovery, which could execute zero tests. CI now explicitly installs pytest and must collect the five model-development regression tests.
+
 - Extended the clean-room model-validation lab with synthetic rating migration, override governance, deterministic report rendering, and four regression tests; the weak reference model remains PASS WITH LIMITATIONS.
 
 ## 3.2.0 — 2026-09-26
@@ -32,7 +34,7 @@
 
 ### Validation evidence
 - IFRS 9 module: **7 regression tests passed**.
-- Model Validation module: **4 core regression tests passed**.
+- Model Validation module: **8 core regression tests passed**.
 - Reference validation verdict: **PASS WITH LIMITATIONS**, driven by calibration and observed-vs-expected evidence rather than hidden behind the acceptable ranking metric.
 
 This file records material portfolio, data-engineering, reliability, and bug-fix changes. Small copy edits and purely cosmetic adjustments are omitted.
