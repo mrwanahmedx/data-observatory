@@ -23,10 +23,9 @@ def run(seed: int = 20260926) -> dict:
         validation["utilization"],
     )
 
-    illustrative_origination_pd = validation["pd_12m_true"].clip(lower=0.005) * 0.65
     stage = assign_stage(
         current_pd=validation_pd,
-        origination_pd=illustrative_origination_pd,
+        origination_pd=validation["origination_pd"].clip(lower=0.005),
         dpd=validation["max_dpd_12m"],
         default_flag=validation["default_12m"].astype(bool),
     )
