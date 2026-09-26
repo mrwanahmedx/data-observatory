@@ -114,8 +114,8 @@ See [TTC / PIT note](docs/TTC_PIT_NOTE.md).
 
 ```bash
 cd risk-model-lab
-python -m pip install -e .
-python -m unittest discover -s tests -v
+python -m pip install -e ".[test]"
+python -m pytest -q
 python -m risk_model_lab.pipeline --borrowers 5000 --output artifacts/run.json
 ```
 
@@ -129,7 +129,7 @@ src/risk_model_lab/
   pit.py        transparent portfolio log-odds shift
   pipeline.py   reproducible development workflow
 
-tests/          model-development controls
+tests/          five pytest regression controls
 docs/           data dictionary, PIT note, governance
 ```
 
