@@ -1,5 +1,7 @@
 # Changelog
 
+- Extended the clean-room model-validation lab with synthetic rating migration, override governance, deterministic report rendering, and four regression tests; the weak reference model remains PASS WITH LIMITATIONS.
+
 ## 3.2.0 — 2026-09-26
 
 ### Added

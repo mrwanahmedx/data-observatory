@@ -39,5 +39,54 @@ class ValidationLabTests(unittest.TestCase):
         self.assertNotEqual(result["verdict"], "PASS")
 
 
+    def test_migration_matrix_preserves_population(self):
+        prior = pd.Series(np.linspace(0.005, 0.30, 500))
+        current = pd.Series(np.clip(prior * 1.15, 0, 1))
+        matrix = lab.migration_matrix(prior, current)
+        self.assertEqual(int(matrix.to_numpy().sum()), len(prior))
+        self.assertEqual(list(matrix.index), list(lab.GRADE_LABELS))
+        self.assertEqual(list(matrix.columns), list(lab.GRADE_LABELS))
+
+    def test_override_audit_is_traceable(self):
+        base = pd.DataFrame(
+            {
+                "borrower_id": ["B1", "B2", "B3", "B4"],
+                "pd": [0.02, 0.04, 0.08, 0.12],
+            }
+        )
+        overrides = pd.DataFrame(
+            {
+                "borrower_id": ["B2", "B4"],
+                "overridden_pd": [0.06, 0.10],
+                "reason": ["new information", "data correction"],
+            }
+        )
+        result = lab.audit_overrides(base, overrides)
+        self.assertEqual(result["overrides"], 2)
+        self.assertEqual(result["upward"], 1)
+        self.assertEqual(result["downward"], 1)
+        self.assertAlmostEqual(result["override_rate"], 0.5)
+
+    def test_override_audit_rejects_duplicate_borrower(self):
+        base = pd.DataFrame({"borrower_id": ["B1"], "pd": [0.02]})
+        overrides = pd.DataFrame(
+            {
+                "borrower_id": ["B1", "B1"],
+                "overridden_pd": [0.03, 0.04],
+                "reason": ["one", "two"],
+            }
+        )
+        with self.assertRaises(ValueError):
+            lab.audit_overrides(base, overrides)
+
+    def test_markdown_report_carries_verdict(self):
+        data = lab.generate_validation_data(n=6000, seed=8, model_quality="poor")
+        dev = data[data["split"] == "development"]
+        test = data[data["split"] == "test"]
+        result = lab.validate_model(dev, test)
+        report = lab.render_validation_report(result)
+        self.assertIn(result["verdict"], report)
+        self.assertIn("Synthetic/public portfolio exercise", report)
+
 if __name__ == "__main__":
     unittest.main()

@@ -143,6 +143,111 @@ def psi(reference: pd.Series, sample: pd.Series, bins: int = 10) -> float:
     return float(np.sum((sam_share - ref_share) * np.log(sam_share / ref_share)))
 
 
+
+GRADE_LABELS = ("A", "B", "C", "D", "E")
+GRADE_CUTOFFS = (0.02, 0.05, 0.10, 0.20)
+
+
+def pd_grade(
+    probabilities: pd.Series,
+    cutoffs: tuple[float, ...] = GRADE_CUTOFFS,
+) -> pd.Series:
+    """Map PDs to transparent synthetic rating bands for migration analysis."""
+    values = pd.Series(probabilities, copy=False).astype(float)
+    if values.isna().any() or ((values < 0) | (values > 1)).any():
+        raise ValueError("PD values must be complete and within [0, 1]")
+    if tuple(sorted(cutoffs)) != tuple(cutoffs) or len(set(cutoffs)) != len(cutoffs):
+        raise ValueError("Grade cutoffs must be unique and increasing")
+    bins = [-np.inf, *cutoffs, np.inf]
+    labels = GRADE_LABELS[: len(bins) - 1]
+    return pd.Series(
+        pd.cut(values, bins=bins, labels=labels, right=False, ordered=True),
+        index=values.index,
+        name="grade",
+    )
+
+
+def migration_matrix(
+    prior_pd: pd.Series,
+    current_pd: pd.Series,
+) -> pd.DataFrame:
+    """Return a count matrix from prior to current synthetic rating grade."""
+    if len(prior_pd) != len(current_pd):
+        raise ValueError("Prior and current populations must align")
+    prior = pd_grade(pd.Series(prior_pd).reset_index(drop=True)).astype(str)
+    current = pd_grade(pd.Series(current_pd).reset_index(drop=True)).astype(str)
+    matrix = pd.crosstab(prior, current, dropna=False)
+    matrix = matrix.reindex(index=GRADE_LABELS, columns=GRADE_LABELS, fill_value=0)
+    matrix.index.name = "prior_grade"
+    matrix.columns.name = "current_grade"
+    return matrix.astype(int)
+
+
+def audit_overrides(
+    base: pd.DataFrame,
+    overrides: pd.DataFrame,
+) -> dict:
+    """Audit synthetic expert overrides without defining an approval policy."""
+    required_base = {"borrower_id", "pd"}
+    required_override = {"borrower_id", "overridden_pd", "reason"}
+    if missing := required_base.difference(base.columns):
+        raise ValueError(f"Missing base columns: {sorted(missing)}")
+    if missing := required_override.difference(overrides.columns):
+        raise ValueError(f"Missing override columns: {sorted(missing)}")
+    if base["borrower_id"].duplicated().any():
+        raise ValueError("Base borrower grain must be unique")
+    if overrides["borrower_id"].duplicated().any():
+        raise ValueError("Each borrower can have at most one override record")
+    if ((overrides["overridden_pd"] < 0) | (overrides["overridden_pd"] > 1)).any():
+        raise ValueError("Overridden PD must be within [0, 1]")
+    if overrides["reason"].fillna("").str.strip().eq("").any():
+        raise ValueError("Every override requires a reason")
+
+    joined = overrides.merge(
+        base[["borrower_id", "pd"]],
+        on="borrower_id",
+        how="left",
+        validate="one_to_one",
+    )
+    if joined["pd"].isna().any():
+        raise ValueError("Override references borrower outside validation population")
+
+    delta = joined["overridden_pd"] - joined["pd"]
+    return {
+        "overrides": int(len(joined)),
+        "override_rate": float(len(joined) / len(base)) if len(base) else 0.0,
+        "upward": int((delta > 0).sum()),
+        "downward": int((delta < 0).sum()),
+        "unchanged": int((delta == 0).sum()),
+        "mean_abs_change": float(delta.abs().mean()) if len(joined) else 0.0,
+        "max_abs_change": float(delta.abs().max()) if len(joined) else 0.0,
+    }
+
+
+def render_validation_report(result: dict) -> str:
+    """Render a compact, deterministic Markdown validation summary."""
+    metrics = result["metrics"]
+    limitations = result.get("limitations", [])
+    failures = result.get("failures", [])
+    concerns = failures + limitations
+    concern_text = "\n".join(f"- {item}" for item in concerns) or "- none"
+    return (
+        "# Synthetic Credit Risk Model Validation\n\n"
+        f"**Verdict:** {result['verdict']}\n\n"
+        "## Core metrics\n\n"
+        f"- ROC AUC: {metrics['auc']:.4f}\n"
+        f"- Gini: {metrics['gini']:.4f}\n"
+        f"- KS: {metrics['ks']:.4f}\n"
+        f"- Brier score: {metrics['brier']:.4f}\n"
+        f"- PSI: {metrics['psi']:.4f}\n"
+        f"- Calibration intercept: {metrics['calibration_intercept']:.4f}\n"
+        f"- Calibration slope: {metrics['calibration_slope']:.4f}\n\n"
+        "## Findings\n\n"
+        f"{concern_text}\n\n"
+        "_Synthetic/public portfolio exercise; not a production validation opinion._\n"
+    )
+
+
 def observed_expected_backtest(
     y: pd.Series,
     p: pd.Series,
@@ -240,9 +345,28 @@ def demo() -> dict:
     development = data[data["split"] == "development"].copy()
     test = data[data["split"] == "test"].copy()
     result = validate_model(development, test)
+
+    prior_pd = pd.Series(np.clip(test["pd"].to_numpy() * 0.90, 0.001, 0.999))
+    migration = migration_matrix(prior_pd, test["pd"].reset_index(drop=True))
+    override_rows = test[["borrower_id", "pd"]].head(8).copy()
+    overrides = pd.DataFrame(
+        {
+            "borrower_id": override_rows["borrower_id"].to_numpy(),
+            "overridden_pd": np.clip(
+                override_rows["pd"].to_numpy() * 1.10,
+                0.001,
+                0.999,
+            ),
+            "reason": ["synthetic review example"] * len(override_rows),
+        }
+    )
+
     return {
         "thresholds": asdict(ValidationThresholds()),
         **result,
+        "migration_matrix": migration.to_dict(),
+        "override_audit": audit_overrides(test[["borrower_id", "pd"]], overrides),
+        "markdown_report": render_validation_report(result),
     }
 
 

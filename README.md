@@ -55,7 +55,7 @@ All Credit Lab data is synthetic. No employer data, customer records, internal b
 - [IFRS 9 Credit Risk Modeling](research/ifrs9-modeling/README.md)
 - [Credit Risk Model Validation](research/model-validation/README.md)
 
-GitHub CI currently executes **11 regression tests** across the two modules: 7 for the ECL engine and 4 for the validation engine. The validation demo intentionally returns **PASS WITH LIMITATIONS** when calibration evidence breaches the illustrative governance ranges.
+GitHub CI currently executes **15 regression tests** across the two research modules: 7 for the ECL engine and 8 for the validation engine. The validation demo intentionally returns **PASS WITH LIMITATIONS** when calibration evidence breaches the illustrative governance ranges.
 
 Both modules are governed by [PUBLIC_DATA_BOUNDARY.md](PUBLIC_DATA_BOUNDARY.md). They use synthetic/public concepts only and prohibit employer/customer data, internal schemas, proprietary methods and private model outputs.
 

@@ -24,6 +24,15 @@ A simple binomial backtest compares observed events with the average predicted e
 ### Challenger comparison
 The lab compares incumbent and challenger AUC on aligned synthetic outcomes. A real validation would require broader statistical and economic comparison, data lineage review, implementation verification and use-test evidence.
 
+### Rating migration
+A transparent synthetic PD-to-grade mapping produces a prior-to-current migration matrix. The cutoffs are illustrative and exist only to demonstrate population conservation and migration diagnostics; they are not copied from a rating policy.
+
+### Override governance
+The lab audits synthetic overrides for unique borrower grain, in-range PDs, traceable reasons, population membership, direction and magnitude. It deliberately does not define who may approve an override or when one should be granted.
+
+### Validation report
+A deterministic Markdown renderer turns the quantitative result into a compact validation summary while retaining the explicit verdict, metric values and limitations.
+
 ## Verdict design
 
 The engine returns:
@@ -43,7 +52,8 @@ A production-grade validation function should be organizationally independent of
 - one synthetic cohort,
 - simplified binary outcome,
 - no out-of-time macroeconomic regime,
-- no overrides/fairness assessment,
+- no fairness assessment,
+- override audit demonstrates traceability but not a real approval process,
 - no implementation-replication testing against an external production engine,
 - no economic-capital or provisioning use-test,
 - no regulatory approval claim.
