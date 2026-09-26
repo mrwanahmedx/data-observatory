@@ -3,7 +3,7 @@ import {creditLabPage} from './credit-lab-page.mjs';
 import {riskDashboardPage} from './risk-dashboard-page.mjs';
 import {projectPage,aboutPage} from './pages.mjs';
 import {studies} from './studies.js';
-const files=['index.html','style.css','app.js','scene.js','data.js','favicon.svg','studies.js','project.js','pages.css','finance-dashboard.css','finance-dashboard.js'];
+const files=['index.html','style.css','app.js','scene.js','data.js','favicon.svg','studies.js','project.js','pages.css','finance-dashboard.css','finance-dashboard.js','finance-dashboard-core.js'];
 files.push('identity.js','identity.css');
 files.push('intro.js','intro.css','model-intro.js','model-intro.css');
 await mkdir('dist',{recursive:true});
