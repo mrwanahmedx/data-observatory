@@ -16,6 +16,7 @@ def test_generation_is_reproducible():
 def test_target_not_in_model_features():
     assert "default_12m" not in MODEL_FEATURES
     assert "pd_12m_true" not in MODEL_FEATURES
+    assert "origination_pd" not in MODEL_FEATURES
 
 
 def test_time_split_is_strictly_out_of_time():
