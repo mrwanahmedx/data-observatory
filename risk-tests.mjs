@@ -43,7 +43,7 @@ test('Built iScore case study exposes architecture, recruiter brief and reliabil
   for(const label of ['Problem','Data','Method','Engineering challenge','Result','Limitations','Code'])assert.ok(methodology.includes(label));
   assert.ok(methodology.includes('SOURCE TABLES'));
   assert.ok(methodology.includes('GRAIN CONTROL'));
-  assert.ok(methodology.includes('fourteen executed reports'));
+  assert.ok(methodology.includes('all fourteen engineered reports'));
   assert.ok(methodology.includes('Reliability evidence from a real regression'));
   assert.ok(dashboard.includes('risk-brief'));
   assert.ok(dashboard.includes('fourteen SQL reports'));
