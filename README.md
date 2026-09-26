@@ -45,6 +45,7 @@ flowchart LR
 - **Credit Risk Lab** — synthetic credit-risk analytics with model performance, calibration, stability, threshold analysis, engineered SQL and Python source shown directly in the browser.
 - **Credit Risk Management** — SQL/database design project.
 - **Understanding Attrition** — Python exploratory analysis project.
+- **Synthetic Credit Risk Model Lab** — executable Python PD-development workflow with borrower-grain controls, validation calibration, held-out testing, PIT-style scenarios and governance documentation.
 - Scroll-driven model and data-visualisation experiments on the home page.
 
 All Credit Lab data is synthetic. No employer data, customer records, internal bank models or confidential methods are used.
@@ -57,6 +58,21 @@ All Credit Lab data is synthetic. No employer data, customer records, internal b
 GitHub CI currently executes **11 regression tests** across the two modules: 7 for the ECL engine and 4 for the validation engine. The validation demo intentionally returns **PASS WITH LIMITATIONS** when calibration evidence breaches the illustrative governance ranges.
 
 Both modules are governed by [PUBLIC_DATA_BOUNDARY.md](PUBLIC_DATA_BOUNDARY.md). They use synthetic/public concepts only and prohibit employer/customer data, internal schemas, proprietary methods and private model outputs.
+
+## Risk Model Lab
+
+The dedicated model-development project lives in [`risk-model-lab/`](./risk-model-lab/).
+
+Key documentation:
+
+- [Architecture](./risk-model-lab/docs/ARCHITECTURE.md)
+- [Data dictionary](./risk-model-lab/docs/DATA_DICTIONARY.md)
+- [TTC / PIT concept note](./risk-model-lab/docs/TTC_PIT_NOTE.md)
+- [Model governance](./risk-model-lab/docs/MODEL_GOVERNANCE.md)
+- [Architecture decision records](./risk-model-lab/docs/decisions/)
+- [3.2.0 release notes](./docs/releases/3.2.0.md)
+
+The model lab has its own Python CI in addition to the portfolio browser/unit-test pipelines.
 
 ## Development
 

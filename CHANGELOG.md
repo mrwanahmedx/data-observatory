@@ -1,5 +1,20 @@
 # Changelog
 
+## 3.2.0 — 2026-09-26
+
+### Added
+- Synthetic Credit Risk Model Lab with executable Python CI.
+- Formal model-development ADRs covering data boundaries, grain, split discipline, baseline choice and fail-closed governance.
+- Expanded Playwright E2E coverage for deep links, SQL interactions and mobile overflow.
+
+### Changed
+- Release version is now tracked explicitly in `VERSION` and `package.json`.
+- Browser reliability is treated as a release gate alongside unit tests and build checks.
+
+### Limitations
+- The Risk Model Lab is synthetic and educational; it is not a bank, bureau, IFRS 9 or regulatory model.
+
+
 ## 2026-09-26 — clean-room risk research expansion
 
 ### Added
