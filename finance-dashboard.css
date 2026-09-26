@@ -75,3 +75,7 @@
 .scb-card-label{font-size:9px;margin-bottom:3px}.scb-card-value{font-size:22px}.scb-card-sub{font-size:7px}
 .scb-viz{grid-template-columns:1.06fr 1fr;gap:9px}.scb-panel{padding:8px;border-radius:5px}.scb-panel-head{font-size:10px}
 .scb-bottom{grid-template-columns:1.06fr 1fr;gap:9px}.scb-gauge{height:98px}.scb-table-panel{height:98px}
+
+/* Keep chart artwork inside its Power BI visual container */
+.scb-chart{position:relative;overflow:hidden;min-width:0}
+.scb-chart>svg{display:block;width:100%;height:100%;overflow:hidden}
