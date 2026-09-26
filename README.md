@@ -7,7 +7,7 @@ Interactive portfolio by Marwan Ahmed, focused on risk analytics, SQL/data engin
 For a fast technical review:
 
 1. open the [live Data Observatory](https://mrwanahmedx.github.io/data-observatory/),
-2. inspect **iScore Credit Lab** for Python, SQL, model validation, and governance,
+2. inspect **Credit Risk Lab** for Python, SQL, model validation, and governance,
 3. inspect **Credit Risk Management** for grain-safe SQL/data engineering,
 4. inspect **Suez Canal Bank** for financial-analysis/dashboard work,
 5. read the [engineering change log](./CHANGELOG.md) for material fixes and regression controls.
@@ -24,7 +24,7 @@ flowchart LR
     D --> E[Automated tests]
     E --> F[GitHub Pages deployment]
 
-    B --> G[iScore model + SQL validation]
+    B --> G[Credit-risk model + SQL validation]
     B --> H[Suez financial calculations]
     B --> I[Credit-risk SQL engineering]
     B --> J[Exploratory analytics]
@@ -42,7 +42,7 @@ flowchart LR
 ## What is in the site
 
 - **Suez Canal Bank dashboard** — an interactive web recreation of the original Power BI project, with coherent selected-year KPI logic and bounded chart rendering.
-- **iScore Credit Lab** — synthetic credit-risk analytics with model performance, calibration, stability, threshold analysis, engineered SQL and Python source shown directly in the browser.
+- **Credit Risk Lab** — synthetic credit-risk analytics with model performance, calibration, stability, threshold analysis, engineered SQL and Python source shown directly in the browser.
 - **Credit Risk Management** — SQL/database design project.
 - **Understanding Attrition** — Python exploratory analysis project.
 - Scroll-driven model and data-visualisation experiments on the home page.
