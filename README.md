@@ -1,6 +1,43 @@
 # Data Observatory
 
-Interactive portfolio by Marwan Ahmed, focused on data science, risk analytics, SQL, model validation and browser-based data storytelling.
+Interactive portfolio by Marwan Ahmed, focused on risk analytics, SQL/data engineering, model validation, financial analysis, and browser-based data storytelling.
+
+## Reviewer path
+
+For a fast technical review:
+
+1. open the [live Data Observatory](https://mrwanahmedx.github.io/data-observatory/),
+2. inspect **iScore Credit Lab** for Python, SQL, model validation, and governance,
+3. inspect **Credit Risk Management** for grain-safe SQL/data engineering,
+4. inspect **Suez Canal Bank** for financial-analysis/dashboard work,
+5. read the [engineering change log](./CHANGELOG.md) for material fixes and regression controls.
+
+The portfolio is intentionally explicit about limitations: synthetic or illustrative data is labeled, failed assumptions are documented, and reliability changes are preserved in Git history.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A[Source project / synthetic assets] --> B[Project-specific analytical logic]
+    B --> C[Reusable browser components]
+    C --> D[Generated project pages]
+    D --> E[Automated tests]
+    E --> F[GitHub Pages deployment]
+
+    B --> G[iScore model + SQL validation]
+    B --> H[Suez financial calculations]
+    B --> I[Credit-risk SQL engineering]
+    B --> J[Exploratory analytics]
+```
+
+## Tech stack
+
+- JavaScript / ES modules
+- HTML / CSS
+- Node.js build scripts
+- Python + SQL source embedded for the Credit Lab
+- GitHub Actions CI
+- GitHub Pages
 
 ## What is in the site
 
