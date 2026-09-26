@@ -62,3 +62,17 @@ test('Score filter includes exact boundary and supports an empty state',()=>{ass
 test('Workforce grouping preserves total employees and departures',()=>{const a=getStudyView('people','department'),b=getStudyView('people','overtime');assert.deepEqual(a.metrics,b.metrics);assert.equal(a.metrics[0][1],'600');assert.equal(a.metrics[2][1],'14.0%');assert.equal(b.rows[0][1],25);});
 test('All project navigation forms one complete cycle',()=>{const visited=new Set();let current='finance';for(let i=0;i<4;i++){assert.ok(studies[current]);visited.add(current);current=studies[current].next;}assert.equal(visited.size,4);assert.equal(current,'finance');});
 test('Every built local link, fragment, and asset resolves',async()=>{const files=(await readdir('dist')).filter(f=>f.endsWith('.html'));assert.equal(files.length,8);for(const file of files){const html=await readFile('dist/'+file,'utf8');for(const match of html.matchAll(/(?:href|src)="([^"]+)"/g)){const href=match[1];if(/^(https?:|mailto:|data:)/.test(href))continue;const [target,fragment]=href.split('#'),resolved=path.join('dist',target||file);await access(resolved);if(fragment){const linked=await readFile(resolved,'utf8');assert.ok(linked.includes(`id="${fragment}"`),`${file}: missing ${href}`);}}}});
+
+test('Project pages expose recruiter-first problem-to-code briefs',async()=>{
+  for(const file of ['finance.html','risk.html','people.html']){
+    const html=await readFile('dist/'+file,'utf8');
+    for(const label of ['Problem','Data','Method','Engineering challenge','Result','Limitations','Code'])assert.ok(html.includes(label),file+' missing '+label);
+    assert.ok(html.includes('RECRUITER BRIEF'),file+' missing recruiter brief');
+  }
+});
+test('Repository change log records material reliability fixes',async()=>{
+  const log=await readFile('CHANGELOG.md','utf8');
+  assert.ok(log.includes('iScore Credit Lab runtime initialization'));
+  assert.ok(log.includes('Suez Canal Bank dashboard KPI context'));
+  assert.ok(log.includes('regression test'));
+});
