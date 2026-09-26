@@ -20,6 +20,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build current website
         run: npm run build
+      - name: Check browser JavaScript syntax
+        run: |
+          node --check app.js
+          node --check risk-dashboard.js
+          node --check finance-dashboard.js
+          node --check finance-dashboard-core.js
+          node --check project.js
       - name: Run tests
         run: npm test
       - uses: actions/configure-pages@v5
