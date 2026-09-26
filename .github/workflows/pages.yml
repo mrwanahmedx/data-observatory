@@ -4,7 +4,7 @@ on:
     branches: [main]
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
@@ -18,13 +18,26 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Extract tested website release
-        run: tar -xzf data-observatory-site.tar.gz
-      - name: Overlay updated Suez dashboard
+      - name: Recover Credit Lab source assets once
         run: |
-          cp finance.html dist/finance.html
-          cp finance-dashboard.css dist/finance-dashboard.css
-          cp finance-dashboard.js dist/finance-dashboard.js
+          tar -xzf data-observatory-site.tar.gz
+          mkdir -p assets/credit-lab
+          for f in analytics.json sources.json queries.json results.json; do
+            test -f "dist/assets/credit-lab/$f"
+            cp "dist/assets/credit-lab/$f" "assets/credit-lab/$f"
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/credit-lab/analytics.json assets/credit-lab/sources.json assets/credit-lab/queries.json assets/credit-lab/results.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Restore Credit Lab runtime assets"
+            git push
+          fi
+          rm -rf dist
+      - name: Build current website
+        run: npm run build
+      - name: Run tests
+        run: npm test
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
