@@ -18,8 +18,13 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Build current website
-        run: npm run build
+      - name: Extract tested website release
+        run: tar -xzf data-observatory-site.tar.gz
+      - name: Overlay updated Suez dashboard
+        run: |
+          cp finance.html dist/finance.html
+          cp finance-dashboard.css dist/finance-dashboard.css
+          cp finance-dashboard.js dist/finance-dashboard.js
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
