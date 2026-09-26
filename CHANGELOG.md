@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-09-26 — clean-room risk research expansion
+
+### Added
+- Standalone research module for synthetic IFRS 9 ECL modeling.
+- Standalone research module for independent credit-risk model validation.
+- Python GitHub Actions CI covering both modules.
+- Tested reference-result files and architecture diagrams.
+- Repository-wide public-data/confidentiality boundary.
+
+### Changed
+- Renamed the recruiter-facing synthetic credit case study to **Credit Risk Lab** to avoid unnecessary employer-brand association.
+- Updated the technical reviewer path to lead with credit-risk modeling, validation, and SQL engineering.
+
+### Validation evidence
+- IFRS 9 module: **7 regression tests passed**.
+- Model Validation module: **4 core regression tests passed**.
+- Reference validation verdict: **PASS WITH LIMITATIONS**, driven by calibration and observed-vs-expected evidence rather than hidden behind the acceptable ranking metric.
+
 This file records material portfolio, data-engineering, reliability, and bug-fix changes. Small copy edits and purely cosmetic adjustments are omitted.
 
 ## 2026-09-26
