@@ -15,7 +15,7 @@ const result=JSON.parse(await readFile('assets/credit-lab/results.json','utf8'))
 await writeFile('dist/credit-lab.html',riskDashboardPage(result));
 await writeFile('dist/score.html',riskDashboardPage(result));
 await writeFile('dist/credit-methodology.html',creditLabPage(result));
-for(const f of ['risk-dashboard.js','risk-dashboard.css','risk-metrics.js','credit-engineering.js'])await copyFile(f,`dist/${f}`);
+for(const f of ['risk-dashboard.js','risk-dashboard.css','risk-metrics.js'])await copyFile(f,`dist/${f}`);
 await cp('assets','dist/assets',{recursive:true});
 await copyFile('credit-lab.js','dist/credit-lab.js');
 await copyFile('credit-lab.css','dist/credit-lab.css');
