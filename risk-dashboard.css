@@ -2,3 +2,12 @@
 :root{font-size:16px}.risk-topbar p,.filter-bar label,.studio-toolbar label,.chart-note,table,.quiet-btn,.filter-bar>span,.confusion-grid span,.confusion-grid small,.kpi span,.sidebar-bottom a,.document-links a{font-size:14px}.disclosure{font-size:14px}.kpi small{font-size:12px}.risk-chart text{font-size:13px}.protocol p,.chart-card>p{font-size:16px}.sidebar-bottom p{font-size:13px}.risk-brand small,.workspace-label,.eyebrow,.card-heading>span,.risk-footer{font-size:12px}.risk-chart{min-height:210px}
 
 .download-btn{border:0;font-family:inherit}.document-links button{font-size:14px}
+
+.risk-brief{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 12px}
+.risk-brief article{background:#fff;border:1px solid var(--border);border-radius:7px;padding:16px;min-width:0}
+.risk-brief span{display:block;font-size:10px;letter-spacing:1px;color:var(--blue);font-weight:700;margin-bottom:8px}
+.risk-brief p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}
+.risk-brief-note{margin:0 0 20px;color:var(--muted);font-size:12px;line-height:1.65}
+.risk-brief-note a,.disclosure a{color:var(--blue);font-weight:600}
+@media(max-width:1100px){.risk-brief{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){.risk-brief{grid-template-columns:1fr}}
