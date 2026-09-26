@@ -24,7 +24,10 @@ The lab asks whether a model is:
 - fixed-bin observed vs predicted rates,
 - population stability index (PSI),
 - binomial observed-vs-expected backtest,
-- challenger comparison.
+- challenger comparison,
+- synthetic rating-migration matrix,
+- governed override audit,
+- deterministic Markdown validation report.
 
 ## Verdicts
 
@@ -41,6 +44,7 @@ Thresholds in this project are **illustrative governance rules for the synthetic
 - `validation_lab.py` — synthetic models, metrics, backtesting and verdict engine.
 - `test_validation_lab.py` — regression tests.
 - `VALIDATION_FRAMEWORK.md` — framework, interpretation and limitations.
+- `RESULTS.md` — deterministic reference outcome and regression-suite status.
 
 ## Run
 
