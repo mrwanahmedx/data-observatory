@@ -1,0 +1,48 @@
+name: Risk Model Lab CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "risk-model-lab/**"
+      - ".github/workflows/risk-model-lab-ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "risk-model-lab/**"
+      - ".github/workflows/risk-model-lab-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  model-lab:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: risk-model-lab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install project
+        run: python -m pip install -e .
+      - name: Compile source
+        run: python -m compileall src tests
+      - name: Run model-development tests
+        run: python -m unittest discover -s tests -v
+      - name: Execute reproducible pipeline
+        run: python -m risk_model_lab.pipeline --borrowers 1800 --seed 20260926 --output artifacts/ci-run.json
+      - name: Validate run artifact
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path("artifacts/ci-run.json")
+          data = json.loads(p.read_text())
+          assert data["rows"]["test"] > 0
+          assert 0.5 <= data["test_metrics"]["auc"] <= 1.0
+          assert "synthetic data" in data["limitations"]
+          print(json.dumps(data["test_metrics"], indent=2))
+          PY
