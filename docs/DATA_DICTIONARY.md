@@ -12,6 +12,7 @@
 | inquiries_6m | borrower observation | synthetic inquiry count |
 | months_on_book | borrower observation | relationship age |
 | segment | borrower observation | retail / micro / SME |
+| origination_pd | staging reference | separately generated synthetic origination PD; excluded from model features |
 | pd_12m_true | generation only | latent synthetic default probability; excluded from model features |
 | default_12m | outcome | synthetic 12-month default indicator |
 | lgd | loss assumption | synthetic LGD used only for ECL illustration |
