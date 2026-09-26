@@ -67,3 +67,47 @@ test('Suez year selection updates the dashboard without overflow errors', async 
   await expect(yearButtons.nth(1)).toHaveClass(/active|selected/);
   await expect(page.locator('svg').first()).toBeVisible();
 });
+
+
+test('iScore code deep link initializes the requested panel', async ({ page }) => {
+  await page.goto('/score.html#panel-code', { waitUntil: 'networkidle' });
+  await expect(page.locator('#panel-code')).toBeVisible();
+  await expect(page.locator('[data-panel="code"]')).toHaveClass(/active/);
+  await expect(page.locator('#language')).toHaveValue('sql');
+  await expect(page.locator('#source-select option')).toHaveCount(14);
+});
+
+test('credit-risk SQL playground updates the displayed predicate', async ({ page }) => {
+  await page.goto('/risk.html', { waitUntil: 'networkidle' });
+  const slider = page.locator('#score-filter');
+  await slider.fill('700');
+  await slider.dispatchEvent('input');
+  await expect(page.locator('#score-output')).toHaveText('700');
+  await expect(page.locator('.query-example')).toContainText('CreditScore >= 700');
+  await expect(page.locator('.query-example')).toContainText('ROW_NUMBER() OVER');
+  await expect(page.locator('.query-example')).toContainText('HAVING COUNT(*) <> 1');
+});
+
+test('mobile iScore view renders without horizontal document overflow', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/score.html', { waitUntil: 'networkidle' });
+  await expect(page.locator('#overview-kpis .kpi')).toHaveCount(4);
+  const dimensions = await page.evaluate(() => ({
+    innerWidth: window.innerWidth,
+    scrollWidth: document.documentElement.scrollWidth
+  }));
+  expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.innerWidth + 1);
+});
+
+test('mobile home and finance pages remain usable', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const route of ['/', '/finance.html']) {
+    await page.goto(route, { waitUntil: 'networkidle' });
+    await expect(page.locator('body')).toBeVisible();
+    const dimensions = await page.evaluate(() => ({
+      innerWidth: window.innerWidth,
+      scrollWidth: document.documentElement.scrollWidth
+    }));
+    expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.innerWidth + 2);
+  }
+});
