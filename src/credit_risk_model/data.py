@@ -56,6 +56,16 @@ def generate_portfolio(n: int = 6000, seed: int = 20260926) -> pd.DataFrame:
         default=0.0,
     )
 
+    origination_logit = (
+        -3.55
+        - 0.000004 * income_egp
+        + 0.008 * (age_years - 38)
+        + 0.55 * (segment == "micro").astype(float)
+        - 0.20 * (segment == "sme").astype(float)
+        + rng.normal(0, 0.18, n)
+    )
+    origination_pd = 1.0 / (1.0 + np.exp(-origination_logit))
+
     logit = (
         -4.15
         + 2.2 * utilization
@@ -96,6 +106,7 @@ def generate_portfolio(n: int = 6000, seed: int = 20260926) -> pd.DataFrame:
             "inquiries_6m": inquiries_6m.astype(int),
             "months_on_book": months_on_book.astype(int),
             "segment": segment,
+            "origination_pd": origination_pd.round(6),
             "pd_12m_true": pd_12m_true,
             "default_12m": default_12m.astype(int),
             "lgd": lgd.round(6),
