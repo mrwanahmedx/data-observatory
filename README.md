@@ -28,7 +28,7 @@ The source of truth is the repository source files. `build.mjs` creates the depl
 
 ## Deployment
 
-GitHub Pages builds the current source on every push to `main`, runs the automated test suite, and deploys `dist/` only if the build and tests succeed.
+Pull requests to `main` first run a non-deploying CI gate that builds the site, checks browser JavaScript syntax, and runs the automated test suite. GitHub Pages then rebuilds current source on merged pushes to `main` and deploys `dist/` only if those checks pass again.
 
 The test suite covers:
 
@@ -50,4 +50,4 @@ Runtime Credit Lab assets live in `assets/credit-lab/`:
 
 The portfolio is intentionally **web-first**: visitors inspect code and saved results in the browser rather than being pushed toward project-file downloads.
 
-[Live Data Observatory](https://mrwanahmedx.github.io/data-observatory/) · [GitHub profile](https://github.com/mrwanahmedx) · [LinkedIn](https://www.linkedin.com/in/mrwan-ahmed/)
+[Engineering change log](./CHANGELOG.md) · [Live Data Observatory](https://mrwanahmedx.github.io/data-observatory/) · [GitHub profile](https://github.com/mrwanahmedx) · [LinkedIn](https://www.linkedin.com/in/mrwan-ahmed/)
