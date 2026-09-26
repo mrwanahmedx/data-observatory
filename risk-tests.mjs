@@ -32,4 +32,4 @@ test('Built iScore pages are web-first and contain no project download controls'
   }
 });
 
-test('Dashboard source does not call forEach on single-element selector helper',async()=>{const js=await readFile('risk-dashboard.js','utf8');assert.ok(!/\$\('[^']+'\)\.forEach/.test(js));assert.ok(js.includes("$$('[data-panel]').forEach"));assert.ok(js.includes("$$('.report-panel').forEach"));assert.ok(js.includes("$$('[data-open-panel]').forEach"));});
+test('Dashboard source does not call forEach on single-element selector helper',async()=>{const js=await readFile('risk-dashboard.js','utf8');assert.ok(!/(^|[^$])\$\('[^']+'\)\.forEach/m.test(js));assert.ok(js.includes("$$('[data-panel]').forEach"));assert.ok(js.includes("$$('.report-panel').forEach"));assert.ok(js.includes("$$('[data-open-panel]').forEach"));});
