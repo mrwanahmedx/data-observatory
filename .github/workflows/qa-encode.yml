@@ -1,0 +1,34 @@
+name: Temporary visual evidence text export
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/qa-encode.yml"
+permissions:
+  contents: write
+jobs:
+  encode-captured-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: true
+      - name: Encode review images as inspectable UTF-8
+        run: |
+          mkdir -p qa-encoded
+          for f in \
+            desktop-home-hero.jpg desktop-home-work.jpg desktop-home.jpg mobile-home.jpg \
+            desktop-finance.jpg mobile-finance.jpg tablet-finance.jpg \
+            desktop-credit-lab.jpg desktop-credit-lab-monitoring.jpg mobile-credit-lab.jpg \
+            desktop-risk.jpg mobile-risk.jpg desktop-people.jpg mobile-people.jpg \
+            desktop-about.jpg mobile-about.jpg desktop-methodology.jpg mobile-methodology.jpg; do
+            base64 -w0 "qa-captures/$f" > "qa-encoded/$f.txt"
+          done
+      - name: Save temporary review encodings
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add qa-encoded/
+          git commit -m "Temporary encoded screenshots for visual review [skip ci]" || exit 0
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
