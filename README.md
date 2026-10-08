@@ -4,13 +4,14 @@ Interactive portfolio by Marwan Ahmed, focused on risk analytics, SQL/data engin
 
 ## Reviewer path
 
-For a fast technical review:
+For a fast technical review, follow the same risk-first order as the main portfolio:
 
-1. inspect **IFRS 9 Credit Risk Modeling** for synthetic ECL architecture, staging and scenario-weighted loss calculations,
-2. inspect **Credit Risk Model Validation** for discrimination, calibration, stability and observed-vs-expected testing,
-3. open the [live Data Observatory](https://mrwanahmedx.github.io/data-observatory/) and review **iScore Credit Risk Lab**,
-4. inspect **Credit Risk Management** for grain-safe SQL/data engineering,
-5. read the [engineering change log](./CHANGELOG.md) for material fixes and regression controls.
+1. open **[iScore Credit Lab](https://mrwanahmedx.github.io/data-observatory/credit-methodology.html)** — independent synthetic case study, one flagship project with its linked model dashboard,
+2. inspect **[IFRS 9 / PD Modeling](./research/ifrs9-modeling/README.md)** — staging, PD/LGD/EAD and probability-weighted loss calculations,
+3. inspect **[Model Validation](./research/model-validation/README.md)** — discrimination, calibration, PSI and observed-versus-expected testing,
+4. inspect **[Credit Risk SQL](https://github.com/mrwanahmedx/Credit-Risk-Management-Database-SQL-Project)** — grain-safe engineering and reconciliation,
+5. inspect **[EGX Quant Research](https://github.com/mrwanahmedx/EGX-Quant-Research)** — evidence-gated market research,
+6. inspect **[HR Attrition](https://github.com/mrwanahmedx/HR-Attrition-Analysis-Using-Python)** — Python exploratory analysis.
 
 The portfolio is intentionally explicit about limitations: synthetic or illustrative data is labeled, failed assumptions are documented, and reliability changes are preserved in Git history.
 
@@ -40,13 +41,15 @@ flowchart LR
 
 ## What is in the site
 
-- **IFRS 9 Credit Risk Modeling** — clean-room synthetic ECL engine with configurable staging, PD/LGD/EAD components, macro scenarios, discounting and regression tests.
-- **Credit Risk Model Validation** — independent synthetic validation engine covering AUC/Gini, KS, Brier, calibration, PSI, observed-vs-expected testing and explicit verdicts.
-- **iScore Credit Risk Lab** — synthetic credit-risk analytics with model performance, calibration, stability, threshold analysis, engineered SQL and Python source shown directly in the browser.
-- **Credit Risk Management** — SQL/database design project.
-- **Understanding Attrition** — Python exploratory analysis project.
-- **Synthetic Credit Risk Model Lab** — executable Python PD-development workflow with borrower-grain controls, validation calibration, held-out testing, PIT-style scenarios and governance documentation.
-- Scroll-driven model and data-visualisation experiments on the home page.
+- **iScore Credit Lab** — independent synthetic credit-risk analytics, calibration and stability, threshold analysis, and engineered SQL/Python, with a dedicated case study and dashboard.
+- **IFRS 9 / PD Modeling** — clean-room synthetic ECL with configurable staging, PD/LGD/EAD, scenarios, discounting and regression tests.
+- **Model Validation** — independent synthetic discrimination, calibration, PSI, observed-vs-expected backtesting and verdicts.
+- **Credit Risk SQL** — SQL/database design and grain-control project.
+- **EGX Quant Research** — evidence-gated quant research, maintained in its own repository.
+- **HR Attrition** — Python exploratory analysis project.
+- **Synthetic Risk Model Lab** — separate executable Python PD-development workflow with calibrated validation, held-out tests and PIT-style scenarios.
+- **Suez Canal Bank financial dashboard** — illustrative bank financial analysis and interactive visualisation.
+- Scroll-driven model/data-visualisation experiments on the homepage.
 
 All Credit Lab data is synthetic. No employer data, customer records, internal bank models or confidential methods are used.
 
