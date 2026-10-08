@@ -1,0 +1,38 @@
+name: Temporary visual QA screenshots
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "visual-qa.mjs"
+      - ".github/workflows/visual-qa.yml"
+permissions:
+  contents: write
+jobs:
+  inspect-live-pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-package-lock
+      - run: npx playwright install --with-deps chromium
+      - name: Capture live site and run visual QA
+        run: node visual-qa.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-qa-live-pages
+          path: qa-captures/
+          retention-days: 3
+      - name: Commit temporary screenshots for visual inspection
+        run: |
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add qa-captures
+          git commit -m "Temporary visual QA screenshot evidence [skip ci]" || exit 0
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
