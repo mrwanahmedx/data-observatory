@@ -134,7 +134,10 @@ def psi(reference: pd.Series, sample: pd.Series, bins: int = 10) -> float:
     edges[0], edges[-1] = -np.inf, np.inf
     edges = np.unique(edges)
     if len(edges) < 3:
-        return 0.0
+        # A constant reference must not produce a false "zero drift" verdict.
+        # Use fixed PD-width bins instead of silently declaring stability.
+        edges = np.linspace(0.0, 1.0, bins + 1)
+        edges[0], edges[-1] = -np.inf, np.inf
 
     ref_counts, _ = np.histogram(reference, bins=edges)
     sam_counts, _ = np.histogram(sample, bins=edges)
