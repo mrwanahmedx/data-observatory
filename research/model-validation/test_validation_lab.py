@@ -21,9 +21,27 @@ class ValidationLabTests(unittest.TestCase):
         auc, gini = lab.auc_gini(test["bad"], test["pd"])
         self.assertAlmostEqual(gini, 2 * auc - 1, places=12)
 
+    def test_observed_expected_respects_heterogeneous_probabilities(self):
+        # Two independent PDs of 1% and 99% give P(no events) = 0.0099.
+        result = lab.observed_expected_backtest(
+            pd.Series([0, 0]), pd.Series([0.01, 0.99])
+        )
+        self.assertAlmostEqual(result["expected_events"], 1.0)
+        self.assertAlmostEqual(result["poisson_binomial_p_value"], 0.0198, places=6)
+
+    def test_observed_expected_rejects_invalid_pd(self):
+        with self.assertRaises(ValueError):
+            lab.observed_expected_backtest(pd.Series([0, 1]), pd.Series([0.1, 1.2]))
+
     def test_psi_same_sample_is_zero(self):
         sample = pd.Series(np.linspace(0.01, 0.40, 500))
         self.assertAlmostEqual(lab.psi(sample, sample), 0.0, places=12)
+
+    def test_psi_detects_drift_from_constant_reference(self):
+        baseline = pd.Series([0.1] * 100)
+        shifted = pd.Series([0.9] * 100)
+        self.assertAlmostEqual(lab.psi(baseline, baseline), 0.0)
+        self.assertGreater(lab.psi(baseline, shifted), 0.25)
 
     def test_calibration_table_preserves_population(self):
         data = lab.generate_validation_data(n=1800, seed=3, model_quality="good")

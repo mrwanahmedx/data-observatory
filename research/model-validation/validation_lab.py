@@ -6,7 +6,7 @@ import json
 
 import numpy as np
 import pandas as pd
-from scipy.stats import binomtest
+from scipy.stats import poisson_binom
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score, brier_score_loss, roc_curve
 
@@ -133,8 +133,11 @@ def psi(reference: pd.Series, sample: pd.Series, bins: int = 10) -> float:
     edges = np.quantile(reference, np.linspace(0, 1, bins + 1))
     edges[0], edges[-1] = -np.inf, np.inf
     edges = np.unique(edges)
-    if len(edges) < 3:
-        return 0.0
+    if reference.nunique(dropna=True) <= 1 or len(edges) < 3:
+        # A constant reference must not produce a false "zero drift" verdict.
+        # Use fixed PD-width bins instead of silently declaring stability.
+        edges = np.linspace(0.0, 1.0, bins + 1)
+        edges[0], edges[-1] = -np.inf, np.inf
 
     ref_counts, _ = np.histogram(reference, bins=edges)
     sam_counts, _ = np.histogram(sample, bins=edges)
@@ -252,16 +255,31 @@ def observed_expected_backtest(
     y: pd.Series,
     p: pd.Series,
 ) -> dict:
-    observed = int(y.sum())
-    expected = float(p.sum())
-    average_pd = float(p.mean())
-    test = binomtest(observed, n=len(y), p=average_pd, alternative="two-sided")
+    """Two-sided Poisson-binomial tail test for independent unequal borrower PDs.
+
+    Doubling the smaller exact tail is conservative for discrete outcomes.
+    This is illustrative and does not account for correlated borrower defaults.
+    """
+    outcomes = np.asarray(y, dtype=float)
+    probabilities = np.asarray(p, dtype=float)
+    if not len(outcomes) or len(outcomes) != len(probabilities):
+        raise ValueError("Backtest requires matching nonempty outcome and PD vectors")
+    if not np.isfinite(probabilities).all() or ((probabilities < 0) | (probabilities > 1)).any():
+        raise ValueError("Backtest probabilities must be finite and within [0, 1]")
+    if not np.isin(outcomes, [0, 1]).all():
+        raise ValueError("Backtest outcomes must be binary")
+    observed = int(outcomes.sum())
+    expected = float(probabilities.sum())
+    average_pd = float(probabilities.mean())
+    lower_tail = float(poisson_binom.cdf(observed, probabilities))
+    upper_tail = float(poisson_binom.sf(observed - 1, probabilities))
+    two_sided_p_value = min(1.0, 2.0 * min(lower_tail, upper_tail))
     return {
         "observed_events": observed,
         "expected_events": expected,
-        "observed_rate": float(y.mean()),
+        "observed_rate": float(outcomes.mean()),
         "predicted_rate": average_pd,
-        "binomial_p_value": float(test.pvalue),
+        "poisson_binomial_p_value": two_sided_p_value,
     }
 
 
@@ -308,7 +326,7 @@ def validate_model(
         limitations.append("calibration slope outside demo range")
     if abs(intercept) > thresholds.maximum_abs_calibration_intercept:
         limitations.append("calibration intercept outside demo range")
-    if oe["binomial_p_value"] < 0.05:
+    if oe["poisson_binomial_p_value"] < 0.05:
         limitations.append("observed/expected backtest rejects calibration")
 
     if failures:
