@@ -76,3 +76,21 @@ test('Repository change log records material reliability fixes',async()=>{
   assert.ok(log.includes('Suez Canal Bank dashboard KPI context'));
   assert.ok(log.includes('regression test'));
 });
+
+// Prevent regression of two analytical errors found in the independent audit.
+test('SQL sample materializes the grain-safe result before its release gate',async()=>{
+  const code=await readFile('project.js','utf8');
+  assert.ok(code.includes('INTO #FilteredLoans'));
+  assert.ok(code.includes('FROM #FilteredLoans\\nGROUP BY LoanID'));
+  assert.ok(code.includes('DROP TABLE #FilteredLoans;'));
+  assert.ok(code.includes('cs.ScoreDate < DATEADD(day, 1, @AsOfDate)'));
+  assert.ok(!code.includes('FROM final\\nGROUP BY LoanID'));
+});
+test('Finance trend uses one labeled dollar-billion scale for both series',async()=>{
+  const js=await readFile('finance-dashboard.js','utf8');
+  assert.ok(js.includes('const yMax=Math.ceil(Math.max(...rv,...ev)/5)*5;'));
+  assert.ok(js.includes('points(rv)'));
+  assert.ok(js.includes('points(ev)'));
+  assert.ok(js.includes('common vertical scale'));
+  assert.ok(!js.includes('poly(ev,w,h,0,10)'));
+});
