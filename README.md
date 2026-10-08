@@ -8,7 +8,7 @@ For a fast technical review:
 
 1. inspect **IFRS 9 Credit Risk Modeling** for synthetic ECL architecture, staging and scenario-weighted loss calculations,
 2. inspect **Credit Risk Model Validation** for discrimination, calibration, stability and observed-vs-expected testing,
-3. open the [live Data Observatory](https://mrwanahmedx.github.io/data-observatory/) and review **iScore Credit Risk Lab**,
+3. open the [live Data Observatory](https://mrwanahmedx.github.io/data-observatory/) and review **iScore Credit Lab**,
 4. inspect **Credit Risk Management** for grain-safe SQL/data engineering,
 5. read the [engineering change log](./CHANGELOG.md) for material fixes and regression controls.
 
@@ -42,10 +42,10 @@ flowchart LR
 
 - **IFRS 9 Credit Risk Modeling** — clean-room synthetic ECL engine with configurable staging, PD/LGD/EAD components, macro scenarios, discounting and regression tests.
 - **Credit Risk Model Validation** — independent synthetic validation engine covering AUC/Gini, KS, Brier, calibration, PSI, observed-vs-expected testing and explicit verdicts.
-- **iScore Credit Risk Lab** — synthetic credit-risk analytics with model performance, calibration, stability, threshold analysis, engineered SQL and Python source shown directly in the browser.
+- **iScore Credit Lab** — synthetic credit-risk analytics with model performance, calibration, stability, threshold analysis, engineered SQL and Python source shown directly in the browser.
 - **Credit Risk Management** — SQL/database design project.
 - **Understanding Attrition** — Python exploratory analysis project.
-- **Synthetic Credit Risk Model Lab** — executable Python PD-development workflow with borrower-grain controls, validation calibration, held-out testing, PIT-style scenarios and governance documentation.
+- **Synthetic Risk Model Lab** — executable Python PD-development workflow with borrower-grain controls, validation calibration, held-out testing, PIT-style scenarios and governance documentation.
 - Scroll-driven model and data-visualisation experiments on the home page.
 
 All Credit Lab data is synthetic. No employer data, customer records, internal bank models or confidential methods are used.
