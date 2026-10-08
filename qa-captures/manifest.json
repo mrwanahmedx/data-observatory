@@ -1,0 +1,908 @@
+{
+  "timestamp": "2026-10-08T06:28:21.947Z",
+  "base": "https://mrwanahmedx.github.io/data-observatory/",
+  "devices": [],
+  "routes": [
+    {
+      "device": "desktop",
+      "route": "https://mrwanahmedx.github.io/data-observatory/",
+      "key": "home",
+      "status": 200,
+      "title": "Data Observatory — Marwan Ahmed",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "documentHeight": 7607,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nExperience\nThe lab\nSelected work\nAbout\nMeet the maker →\nDATA OBSERVATORY / MARWAN AHMED\nSkip intro ↓\n01 / INPUT\nMarwan Ahmed.\n\nData science. Risk analytics. SQL.\n\nSCROLL TO EXPLORE ↓\nInput. Model. Prediction.\nDATA SCIENCE · RISK ANALYTICS · SQL\nMarwan Ahmed.\nData Scientist. Predictive Models Developer. Risk Models Developer. SQL Developer.\nData Scientist\n\nFinding",
+      "possibleOverflowElements": [
+        {
+          "element": "canvas",
+          "className": "",
+          "right": 1541
+        },
+        {
+          "element": "div",
+          "className": "",
+          "right": 1950
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 1622
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 1950
+        }
+      ],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "desktop-home.jpg"
+    },
+    {
+      "device": "desktop",
+      "route": "https://mrwanahmedx.github.io/data-observatory/finance.html",
+      "key": "finance",
+      "status": 200,
+      "title": "Suez Canal Bank — Data Observatory",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "documentHeight": 3476,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nExperience\nThe lab\nSelected work\nAbout\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← ALL PROJECTS\n\n01 / POWER BI / FINANCIAL ANALYSIS\n\nA clearer view of\nfinancial performance.\n\nA finance dashboard project focused on banking KPIs, revenue versus earnings, and year-over-year performance.\n\n01\nFIELD NOTES\nExplore the demo\n↓\nProject on GitHub\n↗\n\nTHE QUESTION\n\nHow do r",
+      "possibleOverflowElements": [],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "desktop-finance.jpg"
+    },
+    {
+      "device": "desktop",
+      "route": "https://mrwanahmedx.github.io/data-observatory/score.html",
+      "key": "score",
+      "status": 200,
+      "title": "Credit Risk Lab | Marwan Ahmed",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "documentHeight": 1528,
+      "overflowPx": 0,
+      "visibleText": "Skip to dashboard\ni\nCredit Risk Lab\nPYTHON AND SQL\nPROJECT PAGES\n01\nPortfolio overview\n02\nModel performance\n03\nCalibration & stability\n04\nSQL and Python\n05\nModel governance\n SYNTHETIC DATA ONLY\n\nPersonal portfolio project.\nNo employer data or methods.\n\n← Back to portfolio\nGitHub project ↗\nLinkedIn ↗\nMARWAN AHMED / CREDIT MODELS\nPortfolio overview\n\nObservation: 31 Dec 2025 • Outcome: Jan to Jun 202",
+      "possibleOverflowElements": [],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "desktop-score.jpg"
+    },
+    {
+      "device": "desktop",
+      "route": "https://mrwanahmedx.github.io/data-observatory/risk.html",
+      "key": "risk",
+      "status": 200,
+      "title": "Credit Risk Management — Data Observatory",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "documentHeight": 5729,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nExperience\nThe lab\nSelected work\nAbout\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← ALL PROJECTS\n\n03 / SQL / DATA ENGINEERING\n\nEngineer the grain\nbefore the join.\n\nA relational SQL project exploring grain control, deduplication, safe aggregation, and credit-risk reporting through simulated banking data.\n\n03\nFIELD NOTES\nExplore the demo\n↓\nProject on GitHub\n↗\n\nTHE",
+      "possibleOverflowElements": [],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "desktop-risk.jpg"
+    },
+    {
+      "device": "desktop",
+      "route": "https://mrwanahmedx.github.io/data-observatory/people.html",
+      "key": "people",
+      "status": 200,
+      "title": "Understanding Attrition — Data Observatory",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "documentHeight": 3570,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nExperience\nThe lab\nSelected work\nAbout\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← ALL PROJECTS\n\n04 / PYTHON / EXPLORATORY ANALYSIS\n\nLook beyond\nthe headline number.\n\nA Python analysis of employee attrition patterns across role, income, overtime and other workforce dimensions.\n\n04\nFIELD NOTES\nExplore the demo\n↓\nProject on GitHub\n↗\n\nTHE QUESTION\n\nDoes the patter",
+      "possibleOverflowElements": [],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "desktop-people.jpg"
+    },
+    {
+      "device": "desktop",
+      "route": "https://mrwanahmedx.github.io/data-observatory/about.html",
+      "key": "about",
+      "status": 200,
+      "title": "About Marwan — Data Observatory",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "documentHeight": 2824,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nExperience\nThe lab\nSelected work\nAbout\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← BACK TO THE OBSERVATORY\n\nTHE PERSON BEHIND THE EXPERIMENT\n\nAnalytical mind.\nCreative instincts.\n\nI’m Marwan Ahmed. My work sits at the intersection of data analysis, business intelligence, and making information easier to explore.\n\nGitHub ↗\nLinkedIn ↗\n\nWHY THIS EXISTS\n\nMake compl",
+      "possibleOverflowElements": [],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "desktop-about.jpg"
+    },
+    {
+      "device": "desktop",
+      "route": "https://mrwanahmedx.github.io/data-observatory/credit-lab.html",
+      "key": "credit-lab",
+      "status": 200,
+      "title": "Credit Risk Lab | Marwan Ahmed",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "documentHeight": 1528,
+      "overflowPx": 0,
+      "visibleText": "Skip to dashboard\ni\nCredit Risk Lab\nPYTHON AND SQL\nPROJECT PAGES\n01\nPortfolio overview\n02\nModel performance\n03\nCalibration & stability\n04\nSQL and Python\n05\nModel governance\n SYNTHETIC DATA ONLY\n\nPersonal portfolio project.\nNo employer data or methods.\n\n← Back to portfolio\nGitHub project ↗\nLinkedIn ↗\nMARWAN AHMED / CREDIT MODELS\nPortfolio overview\n\nObservation: 31 Dec 2025 • Outcome: Jan to Jun 202",
+      "possibleOverflowElements": [],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "desktop-credit-lab.jpg"
+    },
+    {
+      "device": "desktop",
+      "route": "https://mrwanahmedx.github.io/data-observatory/credit-methodology.html",
+      "key": "methodology",
+      "status": 200,
+      "title": "iScore Credit Risk Lab — Data Observatory",
+      "documentWidth": 1440,
+      "viewportWidth": 1440,
+      "documentHeight": 7590,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nExperience\nThe lab\nSelected work\nAbout\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← ALL PROJECTS\n\nPYTHON AND SQL\n\niScore Credit Risk\nLab.\n\niScore Credit Risk Lab. An independent clean-room Python and SQL case study covering repayment history, credit-risk modeling, validation and grain-safe data engineering. The code, data logic and saved results are presented di",
+      "possibleOverflowElements": [],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "desktop-methodology.jpg"
+    },
+    {
+      "device": "mobile",
+      "route": "https://mrwanahmedx.github.io/data-observatory/",
+      "key": "home",
+      "status": 200,
+      "title": "Data Observatory — Marwan Ahmed",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "documentHeight": 7310,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nMeet the maker →\nDATA OBSERVATORY / MARWAN AHMED\nSkip intro ↓\n01 / INPUT\nMarwan Ahmed.\n\nData science. Risk analytics. SQL.\n\nSCROLL TO EXPLORE ↓\nInput. Model. Prediction.\nDATA SCIENCE · RISK ANALYTICS · SQL\nMarwan Ahmed.\nData Scientist. Predictive Models Developer. Risk Models Developer. SQL Developer.\nData Scientist\n\nFinding the patterns. Modeling the possibiliti",
+      "possibleOverflowElements": [
+        {
+          "element": "canvas",
+          "className": "",
+          "right": 421
+        },
+        {
+          "element": "div",
+          "className": "",
+          "right": 1488
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 477
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 730
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 877
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 1059
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 1235
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 1488
+        }
+      ],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "mobile-home.jpg"
+    },
+    {
+      "device": "mobile",
+      "route": "https://mrwanahmedx.github.io/data-observatory/finance.html",
+      "key": "finance",
+      "status": 200,
+      "title": "Suez Canal Bank — Data Observatory",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "documentHeight": 4704,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← ALL PROJECTS\n\n01 / POWER BI / FINANCIAL ANALYSIS\n\nA clearer view of\nfinancial performance.\n\nA finance dashboard project focused on banking KPIs, revenue versus earnings, and year-over-year performance.\n\nExplore the demo\n↓\nProject on GitHub\n↗\n\nTHE QUESTION\n\nHow do revenue, earnings and balance-sheet indicators move tog",
+      "possibleOverflowElements": [
+        {
+          "element": "div",
+          "className": "scb-dashboard",
+          "right": 940
+        },
+        {
+          "element": "div",
+          "className": "scb-topbar",
+          "right": 940
+        },
+        {
+          "element": "div",
+          "className": "scb-title",
+          "right": 732
+        },
+        {
+          "element": "strong",
+          "className": "",
+          "right": 732
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 529
+        },
+        {
+          "element": "div",
+          "className": "scb-stamp",
+          "right": 922
+        },
+        {
+          "element": "strong",
+          "className": "",
+          "right": 922
+        },
+        {
+          "element": "div",
+          "className": "scb-tabs",
+          "right": 940
+        },
+        {
+          "element": "button",
+          "className": "scb-tab",
+          "right": 455
+        },
+        {
+          "element": "button",
+          "className": "scb-tab",
+          "right": 613
+        },
+        {
+          "element": "button",
+          "className": "scb-tab",
+          "right": 772
+        },
+        {
+          "element": "div",
+          "className": "scb-layout",
+          "right": 940
+        }
+      ],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "mobile-finance.jpg"
+    },
+    {
+      "device": "mobile",
+      "route": "https://mrwanahmedx.github.io/data-observatory/score.html",
+      "key": "score",
+      "status": 200,
+      "title": "Credit Risk Lab | Marwan Ahmed",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "documentHeight": 2745,
+      "overflowPx": 0,
+      "visibleText": "Skip to dashboard\ni\nCredit Risk Lab\nPYTHON AND SQL\n01\nPortfolio overview\n02\nModel performance\n03\nCalibration & stability\n04\nSQL and Python\n05\nModel governance\nMARWAN AHMED / CREDIT MODELS\nPortfolio overview\n\nObservation: 31 Dec 2025 • Outcome: Jan to Jun 2026 • Logistic baseline v1\n\nExplore code & results ↓\nAbout the data All data is synthetic. This clean-room project uses synthetic data only and ",
+      "possibleOverflowElements": [
+        {
+          "element": "button",
+          "className": "nav-item ",
+          "right": 528
+        },
+        {
+          "element": "button",
+          "className": "nav-item ",
+          "right": 680
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 553
+        },
+        {
+          "element": "button",
+          "className": "nav-item ",
+          "right": 844
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 705
+        },
+        {
+          "element": "table",
+          "className": "",
+          "right": 532
+        },
+        {
+          "element": "thead",
+          "className": "",
+          "right": 532
+        },
+        {
+          "element": "tr",
+          "className": "",
+          "right": 532
+        },
+        {
+          "element": "th",
+          "className": "",
+          "right": 457
+        },
+        {
+          "element": "th",
+          "className": "",
+          "right": 532
+        },
+        {
+          "element": "tbody",
+          "className": "",
+          "right": 532
+        },
+        {
+          "element": "tr",
+          "className": "",
+          "right": 532
+        }
+      ],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "mobile-score.jpg"
+    },
+    {
+      "device": "mobile",
+      "route": "https://mrwanahmedx.github.io/data-observatory/risk.html",
+      "key": "risk",
+      "status": 200,
+      "title": "Credit Risk Management — Data Observatory",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "documentHeight": 6497,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← ALL PROJECTS\n\n03 / SQL / DATA ENGINEERING\n\nEngineer the grain\nbefore the join.\n\nA relational SQL project exploring grain control, deduplication, safe aggregation, and credit-risk reporting through simulated banking data.\n\nExplore the demo\n↓\nProject on GitHub\n↗\n\nTHE QUESTION\n\nHow do you stop one-to-many joins from sile",
+      "possibleOverflowElements": [],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "mobile-risk.jpg"
+    },
+    {
+      "device": "mobile",
+      "route": "https://mrwanahmedx.github.io/data-observatory/people.html",
+      "key": "people",
+      "status": 200,
+      "title": "Understanding Attrition — Data Observatory",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "documentHeight": 4628,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← ALL PROJECTS\n\n04 / PYTHON / EXPLORATORY ANALYSIS\n\nLook beyond\nthe headline number.\n\nA Python analysis of employee attrition patterns across role, income, overtime and other workforce dimensions.\n\nExplore the demo\n↓\nProject on GitHub\n↗\n\nTHE QUESTION\n\nDoes the pattern change when you change the grouping?\n\nThe original a",
+      "possibleOverflowElements": [],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "mobile-people.jpg"
+    },
+    {
+      "device": "mobile",
+      "route": "https://mrwanahmedx.github.io/data-observatory/about.html",
+      "key": "about",
+      "status": 200,
+      "title": "About Marwan — Data Observatory",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "documentHeight": 3276,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← BACK TO THE OBSERVATORY\n\nTHE PERSON BEHIND THE EXPERIMENT\n\nAnalytical mind.\nCreative instincts.\n\nI’m Marwan Ahmed. My work sits at the intersection of data analysis, business intelligence, and making information easier to explore.\n\nGitHub ↗\nLinkedIn ↗\n\nWHY THIS EXISTS\n\nMake complex things\nfeel a little more intuitive.",
+      "possibleOverflowElements": [],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "mobile-about.jpg"
+    },
+    {
+      "device": "mobile",
+      "route": "https://mrwanahmedx.github.io/data-observatory/credit-lab.html",
+      "key": "credit-lab",
+      "status": 200,
+      "title": "Credit Risk Lab | Marwan Ahmed",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "documentHeight": 2745,
+      "overflowPx": 0,
+      "visibleText": "Skip to dashboard\ni\nCredit Risk Lab\nPYTHON AND SQL\n01\nPortfolio overview\n02\nModel performance\n03\nCalibration & stability\n04\nSQL and Python\n05\nModel governance\nMARWAN AHMED / CREDIT MODELS\nPortfolio overview\n\nObservation: 31 Dec 2025 • Outcome: Jan to Jun 2026 • Logistic baseline v1\n\nExplore code & results ↓\nAbout the data All data is synthetic. This clean-room project uses synthetic data only and ",
+      "possibleOverflowElements": [
+        {
+          "element": "button",
+          "className": "nav-item ",
+          "right": 528
+        },
+        {
+          "element": "button",
+          "className": "nav-item ",
+          "right": 680
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 553
+        },
+        {
+          "element": "button",
+          "className": "nav-item ",
+          "right": 844
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 705
+        },
+        {
+          "element": "table",
+          "className": "",
+          "right": 532
+        },
+        {
+          "element": "thead",
+          "className": "",
+          "right": 532
+        },
+        {
+          "element": "tr",
+          "className": "",
+          "right": 532
+        },
+        {
+          "element": "th",
+          "className": "",
+          "right": 457
+        },
+        {
+          "element": "th",
+          "className": "",
+          "right": 532
+        },
+        {
+          "element": "tbody",
+          "className": "",
+          "right": 532
+        },
+        {
+          "element": "tr",
+          "className": "",
+          "right": 532
+        }
+      ],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "mobile-credit-lab.jpg"
+    },
+    {
+      "device": "mobile",
+      "route": "https://mrwanahmedx.github.io/data-observatory/credit-methodology.html",
+      "key": "methodology",
+      "status": 200,
+      "title": "iScore Credit Risk Lab — Data Observatory",
+      "documentWidth": 390,
+      "viewportWidth": 390,
+      "documentHeight": 11300,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← ALL PROJECTS\n\nPYTHON AND SQL\n\niScore Credit Risk\nLab.\n\niScore Credit Risk Lab. An independent clean-room Python and SQL case study covering repayment history, credit-risk modeling, validation and grain-safe data engineering. The code, data logic and saved results are presented directly in the browser.\n\nEnter the exper",
+      "possibleOverflowElements": [
+        {
+          "element": "table",
+          "className": "",
+          "right": 585
+        },
+        {
+          "element": "caption",
+          "className": "",
+          "right": 585
+        },
+        {
+          "element": "thead",
+          "className": "",
+          "right": 585
+        },
+        {
+          "element": "tr",
+          "className": "",
+          "right": 585
+        },
+        {
+          "element": "th",
+          "className": "",
+          "right": 585
+        },
+        {
+          "element": "tbody",
+          "className": "",
+          "right": 585
+        },
+        {
+          "element": "tr",
+          "className": "",
+          "right": 585
+        },
+        {
+          "element": "td",
+          "className": "",
+          "right": 585
+        }
+      ],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "mobile-methodology.jpg"
+    },
+    {
+      "device": "tablet",
+      "route": "https://mrwanahmedx.github.io/data-observatory/",
+      "key": "home",
+      "status": 200,
+      "title": "Data Observatory — Marwan Ahmed",
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "documentHeight": 7706,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nExperience\nThe lab\nSelected work\nAbout\nMeet the maker →\nDATA OBSERVATORY / MARWAN AHMED\nSkip intro ↓\n01 / INPUT\nMarwan Ahmed.\n\nData science. Risk analytics. SQL.\n\nSCROLL TO EXPLORE ↓\nInput. Model. Prediction.\nDATA SCIENCE · RISK ANALYTICS · SQL\nMarwan Ahmed.\nData Scientist. Predictive Models Developer. Risk Models Developer. SQL Developer.\nData Scientist\n\nFinding",
+      "possibleOverflowElements": [
+        {
+          "element": "canvas",
+          "className": "",
+          "right": 891
+        },
+        {
+          "element": "div",
+          "className": "",
+          "right": 1950
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 952
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 1147
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 1390
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 1622
+        },
+        {
+          "element": "span",
+          "className": "",
+          "right": 1950
+        }
+      ],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "tablet-home.jpg"
+    },
+    {
+      "device": "tablet",
+      "route": "https://mrwanahmedx.github.io/data-observatory/finance.html",
+      "key": "finance",
+      "status": 200,
+      "title": "Suez Canal Bank — Data Observatory",
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "documentHeight": 4108,
+      "overflowPx": 0,
+      "visibleText": "Skip to content\nDATA\nOBSERVATORY\n®\nExperience\nThe lab\nSelected work\nAbout\nHome ↗\nHome\nFinance\niScore\nSQL\nPeople\nAbout\n← ALL PROJECTS\n\n01 / POWER BI / FINANCIAL ANALYSIS\n\nA clearer view of\nfinancial performance.\n\nA finance dashboard project focused on banking KPIs, revenue versus earnings, and year-over-year performance.\n\n01\nFIELD NOTES\nExplore the demo\n↓\nProject on GitHub\n↗\n\nTHE QUESTION\n\nHow do r",
+      "possibleOverflowElements": [
+        {
+          "element": "div",
+          "className": "scb-dashboard",
+          "right": 976
+        },
+        {
+          "element": "div",
+          "className": "scb-topbar",
+          "right": 976
+        },
+        {
+          "element": "div",
+          "className": "scb-stamp",
+          "right": 958
+        },
+        {
+          "element": "strong",
+          "className": "",
+          "right": 958
+        },
+        {
+          "element": "div",
+          "className": "scb-tabs",
+          "right": 976
+        },
+        {
+          "element": "button",
+          "className": "scb-tab",
+          "right": 808
+        },
+        {
+          "element": "div",
+          "className": "scb-layout",
+          "right": 976
+        },
+        {
+          "element": "div",
+          "className": "scb-main",
+          "right": 968
+        },
+        {
+          "element": "div",
+          "className": "scb-kpis",
+          "right": 968
+        },
+        {
+          "element": "div",
+          "className": "scb-card",
+          "right": 815
+        },
+        {
+          "element": "div",
+          "className": "scb-card-label",
+          "right": 804
+        },
+        {
+          "element": "div",
+          "className": "scb-card-value",
+          "right": 804
+        }
+      ],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "tablet-finance.jpg"
+    },
+    {
+      "device": "tablet",
+      "route": "https://mrwanahmedx.github.io/data-observatory/score.html",
+      "key": "score",
+      "status": 200,
+      "title": "Credit Risk Lab | Marwan Ahmed",
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "documentHeight": 2527,
+      "overflowPx": 0,
+      "visibleText": "Skip to dashboard\ni\nCredit Risk Lab\nPYTHON AND SQL\n01\nPortfolio overview\n02\nModel performance\n03\nCalibration & stability\n04\nSQL and Python\n05\nModel governance\nMARWAN AHMED / CREDIT MODELS\nPortfolio overview\n\nObservation: 31 Dec 2025 • Outcome: Jan to Jun 2026 • Logistic baseline v1\n\nExplore code & results ↓\nAbout the data All data is synthetic. This clean-room project uses synthetic data only and ",
+      "possibleOverflowElements": [
+        {
+          "element": "button",
+          "className": "nav-item ",
+          "right": 844
+        }
+      ],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "tablet-score.jpg"
+    },
+    {
+      "device": "tablet",
+      "route": "https://mrwanahmedx.github.io/data-observatory/credit-lab.html",
+      "key": "credit-lab",
+      "status": 200,
+      "title": "Credit Risk Lab | Marwan Ahmed",
+      "documentWidth": 768,
+      "viewportWidth": 768,
+      "documentHeight": 2527,
+      "overflowPx": 0,
+      "visibleText": "Skip to dashboard\ni\nCredit Risk Lab\nPYTHON AND SQL\n01\nPortfolio overview\n02\nModel performance\n03\nCalibration & stability\n04\nSQL and Python\n05\nModel governance\nMARWAN AHMED / CREDIT MODELS\nPortfolio overview\n\nObservation: 31 Dec 2025 • Outcome: Jan to Jun 2026 • Logistic baseline v1\n\nExplore code & results ↓\nAbout the data All data is synthetic. This clean-room project uses synthetic data only and ",
+      "possibleOverflowElements": [
+        {
+          "element": "button",
+          "className": "nav-item ",
+          "right": 844
+        }
+      ],
+      "errors": [],
+      "badResponses": [],
+      "requests": [],
+      "screenshot": "tablet-credit-lab.jpg"
+    }
+  ],
+  "notes": [
+    {
+      "test": "home lenses/range",
+      "label": "RETENTION RATE",
+      "value": "84.6%"
+    },
+    {
+      "test": "finance year 2002",
+      "selectedYear": "2002",
+      "revenue": "15.50"
+    },
+    {
+      "test": "score panel",
+      "device": "desktop",
+      "panel": "performance",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "desktop",
+      "panel": "monitoring",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "desktop",
+      "panel": "code",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "desktop",
+      "panel": "governance",
+      "visible": true
+    },
+    {
+      "test": "risk empty state",
+      "device": "desktop",
+      "found": "No records match this filter.\n\nLower the minimum score to bring sample records back into view."
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "desktop",
+      "panel": "performance",
+      "visible": true
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "desktop",
+      "panel": "monitoring",
+      "visible": true
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "desktop",
+      "panel": "code",
+      "visible": true
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "desktop",
+      "panel": "governance",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "mobile",
+      "panel": "performance",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "mobile",
+      "panel": "monitoring",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "mobile",
+      "panel": "code",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "mobile",
+      "panel": "governance",
+      "visible": true
+    },
+    {
+      "test": "risk empty state",
+      "device": "mobile",
+      "found": "No records match this filter.\n\nLower the minimum score to bring sample records back into view."
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "mobile",
+      "panel": "performance",
+      "visible": true
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "mobile",
+      "panel": "monitoring",
+      "visible": true
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "mobile",
+      "panel": "code",
+      "visible": true
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "mobile",
+      "panel": "governance",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "tablet",
+      "panel": "performance",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "tablet",
+      "panel": "monitoring",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "tablet",
+      "panel": "code",
+      "visible": true
+    },
+    {
+      "test": "score panel",
+      "device": "tablet",
+      "panel": "governance",
+      "visible": true
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "tablet",
+      "panel": "performance",
+      "visible": true
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "tablet",
+      "panel": "monitoring",
+      "visible": true
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "tablet",
+      "panel": "code",
+      "visible": true
+    },
+    {
+      "test": "credit-lab panel",
+      "device": "tablet",
+      "panel": "governance",
+      "visible": true
+    }
+  ]
+}
