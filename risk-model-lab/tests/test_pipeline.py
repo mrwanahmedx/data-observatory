@@ -44,3 +44,10 @@ def test_pit_style_shift_hits_target_and_preserves_order():
 def test_psi_is_zero_for_identical_distributions():
     x = np.linspace(0.01, 0.5, 500)
     assert abs(psi(x, x)) < 1e-12
+
+
+def test_psi_detects_drift_from_constant_reference():
+    baseline = np.full(100, 0.10)
+    shifted = np.full(100, 0.90)
+    assert abs(psi(baseline, baseline)) < 1e-12
+    assert psi(baseline, shifted) > 0.25
