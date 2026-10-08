@@ -23,7 +23,7 @@ The lab asks whether a model is:
 - calibration intercept and slope,
 - fixed-bin observed vs predicted rates,
 - population stability index (PSI),
-- binomial observed-vs-expected backtest,
+- Poisson-binomial observed-vs-expected test for heterogeneous borrower PDs (independent-outcome assumption),
 - challenger comparison,
 - synthetic rating-migration matrix,
 - governed override audit,
@@ -49,7 +49,7 @@ Thresholds in this project are **illustrative governance rules for the synthetic
 ## Run
 
 ```bash
-python -m pip install numpy pandas scipy scikit-learn
+python -m pip install numpy pandas 'scipy>=1.15' scikit-learn
 python research/model-validation/validation_lab.py
 python -m unittest research/model-validation/test_validation_lab.py -v
 ```
