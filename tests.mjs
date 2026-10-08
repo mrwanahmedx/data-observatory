@@ -81,10 +81,10 @@ test('Repository change log records material reliability fixes',async()=>{
 test('SQL sample materializes the grain-safe result before its release gate',async()=>{
   const code=await readFile('project.js','utf8');
   assert.ok(code.includes('INTO #FilteredLoans'));
-  assert.ok(code.includes('FROM #FilteredLoans\\nGROUP BY LoanID'));
+  assert.match(code,/FROM #FilteredLoans\s+GROUP BY LoanID/);
   assert.ok(code.includes('DROP TABLE #FilteredLoans;'));
   assert.ok(code.includes('cs.ScoreDate < DATEADD(day, 1, @AsOfDate)'));
-  assert.ok(!code.includes('FROM final\\nGROUP BY LoanID'));
+  assert.doesNotMatch(code,/FROM final\s+GROUP BY LoanID/);
 });
 test('Finance trend uses one labeled dollar-billion scale for both series',async()=>{
   const js=await readFile('finance-dashboard.js','utf8');
