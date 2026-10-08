@@ -111,3 +111,13 @@ test('mobile home and finance pages remain usable', async ({ page }) => {
     expect(dimensions.scrollWidth).toBeLessThanOrEqual(dimensions.innerWidth + 2);
   }
 });
+
+
+test('finance table row year selection supports keyboard', async ({ page }) => {
+  await page.goto('/finance.html', { waitUntil: 'networkidle' });
+  const earliestYear = page.locator('#scb-table-body tr').last();
+  await earliestYear.focus();
+  await expect(earliestYear).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#scb-stamp-year')).toHaveText('2002');
+});
