@@ -37,6 +37,12 @@ class ValidationLabTests(unittest.TestCase):
         sample = pd.Series(np.linspace(0.01, 0.40, 500))
         self.assertAlmostEqual(lab.psi(sample, sample), 0.0, places=12)
 
+    def test_psi_detects_drift_from_constant_reference(self):
+        baseline = pd.Series([0.1] * 100)
+        shifted = pd.Series([0.9] * 100)
+        self.assertAlmostEqual(lab.psi(baseline, baseline), 0.0)
+        self.assertGreater(lab.psi(baseline, shifted), 0.25)
+
     def test_calibration_table_preserves_population(self):
         data = lab.generate_validation_data(n=1800, seed=3, model_quality="good")
         test = data[data["split"] == "test"]
