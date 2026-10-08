@@ -76,3 +76,24 @@ test('Repository change log records material reliability fixes',async()=>{
   assert.ok(log.includes('Suez Canal Bank dashboard KPI context'));
   assert.ok(log.includes('regression test'));
 });
+
+test('Homepage presents one original iScore Credit Lab flagship and ordered risk work',async()=>{
+  const html=await readFile('index.html','utf8');
+  const section=html.split('id="work"')[1]?.split('</section>')[0]??'';
+  assert.ok(section.includes('<h3>iScore<br><em>Credit Lab.</em></h3>'));
+  assert.ok(section.includes('href="./credit-methodology.html"'));
+  assert.ok(!section.includes('href="./score.html"'));
+  assert.ok(!section.includes('iScore Credit Risk Lab'));
+  const names=['iScore<br>','IFRS 9 / PD Modeling','Model Validation','Credit Risk SQL','EGX Quant Research','HR Attrition'];
+  const positions=names.map(name=>section.indexOf(name));
+  assert.ok(positions.every((pos,i)=>pos>=0&&(i===0||pos>positions[i-1])));
+  assert.equal((section.match(/iScore<br>/g)||[]).length,1);
+});
+test('Generated case study and dashboard retain original iScore Credit Lab branding',async()=>{
+  const methodology=await readFile('dist/credit-methodology.html','utf8');
+  const dashboard=await readFile('dist/credit-lab.html','utf8');
+  assert.ok(methodology.includes('<h1>iScore<br><em>Credit Lab.</em></h1>'));
+  assert.ok(dashboard.includes('<title>iScore Credit Lab | Marwan Ahmed</title>'));
+  assert.ok(dashboard.includes('iScore Credit Lab<small>'));
+  assert.ok(dashboard.includes('All data is synthetic'));
+});
