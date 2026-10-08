@@ -4,7 +4,7 @@ GitHub Actions run: `Risk Research CI` on Python 3.12.
 
 ## Regression suite
 
-**8 core tests passed on the previous main-branch run.** Two additional observed/expected regression tests have been proposed on the audit branch; their CI result must be checked before this section is updated.
+**11 regression tests passed** in [Risk Research CI on the audit branch](https://github.com/mrwanahmedx/data-observatory/actions/runs/37736863895), including heterogeneous-PD and constant-reference PSI edge cases.
 
 The tests enforce the AUC/Gini identity, PSI zero for identical samples, calibration-bin population reconciliation, migration-matrix population conservation, override traceability, duplicate-override rejection, validation-report verdict propagation, and the rule that a deliberately poor synthetic model cannot receive an unconditional clean pass.
 
@@ -26,7 +26,7 @@ The deterministic weak-model demonstration returned:
 | Predicted event rate | 17.06% |
 | Calibration intercept | -1.4093 |
 | Calibration slope | 0.4289 |
-| O/E Poisson-binomial p-value | Pending fresh execution after the methodology correction |
+| O/E Poisson-binomial p-value | 1.9301e-13 |
 
 ### Limitations triggered
 
@@ -47,4 +47,4 @@ The deterministic demo also produces:
 
 These are teaching controls. Rating cutoffs, override examples and governance thresholds are illustrative and are not copied from an employer policy.
 
-**Reference freshness:** The earlier O/E p-value (9.68e-11) used a pooled-binomial approximation and must not be cited as the updated Poisson-binomial result. Refresh deterministic outputs and this reference table after audit-branch CI and merge.
+**Methodology correction:** The previous pooled-binomial O/E p-value (9.68e-11) was superseded. The Poisson-binomial test uses each independent synthetic borrower's own PD; it produced 1.9301e-13 in the audit-branch CI run.
