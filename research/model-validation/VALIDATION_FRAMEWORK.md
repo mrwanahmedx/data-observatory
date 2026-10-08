@@ -19,7 +19,7 @@ Brier score measures squared probability error. It combines elements of calibrat
 PSI compares score/probability distributions between the synthetic development and test samples. The threshold used by the demo verdict engine is illustrative.
 
 ### Observed versus expected
-A simple binomial backtest compares observed events with the average predicted event probability. This is a compact teaching example, not a substitute for a full calibration framework.
+An exact Poisson-binomial count distribution retains each borrower's own predicted probability instead of pooling them into one common PD. The two-sided demo p-value doubles the smaller exact tail (a conservative discrete-event convention). This assumes conditionally independent borrower outcomes; correlated defaults, model uncertainty and portfolio concentration remain outside scope.
 
 ### Challenger comparison
 The lab compares incumbent and challenger AUC on aligned synthetic outcomes. A real validation would require broader statistical and economic comparison, data lineage review, implementation verification and use-test evidence.
