@@ -133,7 +133,7 @@ def psi(reference: pd.Series, sample: pd.Series, bins: int = 10) -> float:
     edges = np.quantile(reference, np.linspace(0, 1, bins + 1))
     edges[0], edges[-1] = -np.inf, np.inf
     edges = np.unique(edges)
-    if len(edges) < 3:
+    if reference.nunique(dropna=True) <= 1 or len(edges) < 3:
         # A constant reference must not produce a false "zero drift" verdict.
         # Use fixed PD-width bins instead of silently declaring stability.
         edges = np.linspace(0.0, 1.0, bins + 1)
